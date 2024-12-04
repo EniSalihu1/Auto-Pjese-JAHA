@@ -1,18 +1,20 @@
 body{
 
+  
    margin: 0;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* Nav */
-.container .nav {
+
+.nav {
 
    display: flex;
    align-items: center;
    justify-content: space-between;
    background-color: rgb(0, 0, 0);
    padding: 10px 20px;
-   margin: 10px;
+   margin: 0px;
 }
 
 .nav img{
@@ -65,7 +67,7 @@ body{
     align-items: center; 
     text-align: center; 
     background: url('../Images/Background.webp') no-repeat center center/cover;
-      height: 100vh;
+      height: 85vh;
 }
 
 
@@ -109,3 +111,78 @@ body{
    background-color: #333; 
 }
 
+/*Footer*/
+
+.footer {
+   background-color: #222;
+   color: #fff;
+   padding: 40px 20px;
+   text-align: center;
+}
+
+.footer-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-items: flex-start;
+   max-width: 1200px;
+   margin: 0 auto;
+   gap: 20px;
+}
+
+.footer-section {
+   flex: 1 1 250px;
+   margin: 10px;
+}
+
+.footer-section h4 {
+   font-size: 18px;
+   margin-bottom: 15px;
+   border-bottom: 2px solid #054442;
+   display: inline-block;
+}
+
+.footer-section p, 
+.footer-section ul, 
+.footer-section a {
+   font-size: 14px;
+   line-height: 1.6;
+}
+
+.footer-section ul {
+   list-style: none;
+   padding: 0;
+}
+
+.footer-section li {
+   margin-bottom: 8px;
+}
+
+.footer-section a {
+   color: #fff;
+   text-decoration: none;
+   transition: color 0.3s;
+}
+
+.footer-section a:hover {
+   color: #054442;
+}
+
+.footer-section.social a {
+   margin: 0 10px;
+   display: inline-block;
+}
+
+.footer-section.social img {
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+}
+
+.footer-bottom {
+   margin-top: 20px;
+   border-top: 1px solid #444;
+   padding-top: 10px;
+   font-size: 12px;
+   color: #bbb;
+}

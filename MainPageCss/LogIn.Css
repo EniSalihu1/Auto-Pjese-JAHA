@@ -75,12 +75,16 @@
 .btn {
     width: 100%;
     padding: 10px;
-    background-color: #555;
+    background-color: #054442;
     color: #f4f4f4; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
+}
+
+.btn a{
+    color: #f4f4f4;
 }
 
 .btn:hover {
