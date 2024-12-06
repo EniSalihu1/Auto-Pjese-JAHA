@@ -1,3 +1,10 @@
+body {
+   font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   background-color: #f4f4f9;
+   color: #333;
+}
 .nav {
 
     display: flex;
@@ -31,13 +38,7 @@
     text-decoration: none;
     font-size: 16px;
  }
-body {
-     font-family: Arial, sans-serif;
-     margin: 0; 
-     padding: 0; 
-     background-color: #f9f9f9; 
-
-    } .container { 
+  .container { 
         display: flex; 
         flex-wrap: wrap; 
         justify-content: space-between; 
