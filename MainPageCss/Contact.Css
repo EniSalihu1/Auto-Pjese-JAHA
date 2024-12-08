@@ -175,3 +175,53 @@ body {
         color: #bbb;
      }
 
+     /* Responsiviteti per tablet*/
+     @media (max-width: 768px) {
+      .container {
+          flex-direction: column;
+      }
+  
+      .left-section,
+      .right-section {
+          flex: 1 1 100%;
+          border-right: none;
+      }
+  
+      .nav ul {
+          flex-wrap: wrap;
+      }
+  
+      .footer-container {
+          flex-direction: column;
+          text-align: center;
+      }
+  }
+  
+   /* Responsiviteti per telefon*/
+  @media (max-width: 480px) {
+      .nav img {
+          width: 40px;
+          height: 40px;
+      }
+  
+      .nav a {
+          font-size: 14px;
+      }
+  
+      .container {
+          margin: 10px auto;
+      }
+  
+      .footer-section {
+          margin-bottom: 10px;
+      }
+  
+      form input,
+      form textarea {
+          font-size: 14px;
+      }
+  
+      form button {
+          font-size: 14px;
+      }
+  }
