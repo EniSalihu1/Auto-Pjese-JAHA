@@ -28,8 +28,8 @@ document.getElementById("registerForm").addEventListener("submit", function(even
         errorMessages.push("Ju lutem shkruani një email të saktë.");
     }
 
-    if (password.length < 6) {
-        errorMessages.push("Fjalëkalimi duhet të jetë të paktën 6 karaktere.");
+    if (password.length < 8) {
+        errorMessages.push("Fjalëkalimi duhet të jetë të paktën 8 karaktere.");
     }
 
     if (password !== confirmPassword) {
