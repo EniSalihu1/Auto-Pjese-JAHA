@@ -29,7 +29,7 @@ session_start ();
     </header>
 
     <div class="wrapper"> 
-        <form action="">
+        <form action="../Main.php" method = "POST">
             <div id="Hyrje">
 
                 <img src="../Images/Logo.jpg" alt="">
@@ -52,11 +52,11 @@ session_start ();
                 </label>
                 <a href="./ForgotPassword.html">Forgot password</a>
             </div>
-            <button type="submit" class="btn"><a href="./Main.html">Login </a></button>
+            <button type="submit" class="btn"><a href="../Main.html">Login </a></button>
 
             <div class="register-link">
                 <p>Don't have an account? 
-                    <a href="../MainPageHTML/Register.html"> Register</a></p>
+                    <a href="./Register.php"> Register</a></p>
             </div>  
 
         </form>

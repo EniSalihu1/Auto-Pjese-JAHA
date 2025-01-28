@@ -2,7 +2,35 @@
 
 session_start ();
 
+// Lidhja me bazën e të dhënave
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "autopjese_jaha";
 
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Kontrollo lidhjen
+if ($conn->connect_error) {
+    die("Lidhja dështoi: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $sql = "INSERT INTO users (fullname, email, password) VALUES ('$fullname', '$email', '$password')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Regjistrimi u krye me sukses!";
+        header("Location: LogIn.php");
+    } else {
+        echo "Gabim: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -10,10 +38,11 @@ session_start ();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Pjese JAHA</title>
-    <link rel="stylesheet" href="../MainPageCss/LogIn.Css">
+    <title>Regjistrimi</title>
+    <link rel="stylesheet" href="../MainPageCss/Register.Css">
 </head>
 <body>
+    
     <header class="nav">
 
         <a href="./Main.html">
@@ -27,41 +56,36 @@ session_start ();
             <li><a href="../MainPageHTML/Contact.html">Contact Us</a></li>
         </ul>
     </header>
-
+    
     <div class="wrapper"> 
-        <form action="">
+        <form id="registerForm" action="../Index2.php/Register.php" method="POST">
             <div id="Hyrje">
-
                 <img src="../Images/Logo.jpg" alt="">
-                <h1>Log In</h1>
-
+                <h1>Register Here!</h1>
             </div>
             
-            <div class="input-box">
-                <input type="text" placeholder="Username"
-                required>
+            <div class="input-box1">
+                <input type="text" id="emri" placeholder="Emri" required>
+                <input type="text" id="mbiemri" placeholder="Mbiemri" required>
             </div>
             
+    
             <div class="input-box">
-                <input type="password" placeholder="Password"
-                required>
+                <input type="email" id="email" placeholder="Email" required>
             </div>
-
-            <div class="remember-forgot">
-                <label><input type="checkbox"> Remember me
-                </label>
-                <a href="./ForgotPassword.html">Forgot password</a>
+    
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn"><a href="./Main.html">Login </a></button>
-
-            <div class="register-link">
-                <p>Don't have an account? 
-                    <a href="../MainPageHTML/Register.html"> Register</a></p>
-            </div>  
-
+    
+            <div class="input-box">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+    
+            <button type="submit"  class="btn ">Register</a></button>
         </form>
     </div>
-    
+    <script src="script.js"></script>
     <div class="footer">
 
         <div class="footer-container">
@@ -88,8 +112,6 @@ session_start ();
         </div>
 
     </div>
-
-
     
 </body>
 </html>
