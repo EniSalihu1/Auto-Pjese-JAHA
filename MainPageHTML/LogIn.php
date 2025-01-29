@@ -1,55 +1,52 @@
 <?php
+include 'db_autopjese.php'; // Lidhja me databazën
 
-session_start ();
+session_start();
 
-// Lidhja me bazën e të dhënave
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "autopjese_jaha";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Kontrollo lidhjen
-if ($conn->connect_error) {
-    die("Lidhja dështoi: " . $conn->connect_error);
+if (isset($_SESSION['email'])) {
+    header("Location: Main.php");
+    exit;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // Përgatit dhe ekzekuto pyetjen SQL
-    $sql = "SELECT * FROM users WHERE email = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
+    if (!empty($email) && !empty($password)) {
+        // Përgatit query për të marrë fjalëkalimin nga databaza bazuar në email
+        $stmt = $conn->prepare("SELECT id, name, surname, password FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
 
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($id, $name, $surname, $hashedPassword);
+            $stmt->fetch();
 
-    // Kontrollojmë nëse fjalëkalimi i dhënë përputhet me atë në bazën e të dhënave
-    if (password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_fullname'] = $user['fullname'];
+            // Kontrollo nëse fjalëkalimi është i saktë
+            if (password_verify($password, $hashedPassword)) {
+                // Ruaj të dhënat në sesion
+                $_SESSION['id'] = $id;
+                $_SESSION['email'] = $email;
+                $_SESSION['name'] = $name;
+                $_SESSION['surname'] = $surname;
 
-        // Ridrejto tek Main.html
-        header("Location: ../MainPageHTML/Main.html");
-        exit();
+                header("Location: Main.php");
+                exit;
+            } else {
+                $error = "Invalid email or password.";
+            }
+        } else {
+            $error = "Invalid email or password.";
+        }
+        $stmt->close();
     } else {
-        echo "<p style='color: red; text-align: center;'>Email ose fjalëkalim i pasaktë!</p>";
+        $error = "Please fill in both fields.";
     }
-} else {
-    echo "<p style='color: red; text-align: center;'>Email ose fjalëkalim i pasaktë!</p>";
+    $conn->close();
 }
-
-    $stmt->close();
-}
-
-$conn->close();
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,15 +59,15 @@ $conn->close();
 <body>
     <header class="nav">
 
-        <a href="./Main.html">
+        <a href="./Main.php">
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
         <ul>
-            <li><a href="../MainPageHTML/Main.html">Home</a></li>
-            <li><a href="../MainPageHTML/News.html">News</a></li>
-            <li><a href="../MainPageHTML/Produkt.html">Products</a></li>
-            <li><a href="../MainPageHTML/AboutUs.html">About Us</a></li>
-            <li><a href="../MainPageHTML/Contact.html">Contact Us</a></li>
+            <li><a href="../MainPageHTML/Main.php">Home</a></li>
+            <li><a href="../MainPageHTML/News.php">News</a></li>
+            <li><a href="../MainPageHTML/Produkt.php">Products</a></li>
+            <li><a href="../MainPageHTML/AboutUs.php">About Us</a></li>
+            <li><a href="../MainPageHTML/Contact.php">Contact Us</a></li>
         </ul>
     </header>
 
@@ -96,7 +93,7 @@ $conn->close();
             <div class="remember-forgot">
                 <label><input type="checkbox"> Remember me
                 </label>
-                <a href="./ForgotPassword.html">Forgot password</a>
+                <a href="./ForgotPassword.php">Forgot password</a>
             </div>
             <button type="submit" class="btn">Login</button>
 
