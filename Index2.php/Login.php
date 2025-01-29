@@ -2,6 +2,52 @@
 
 session_start ();
 
+// Lidhja me bazën e të dhënave
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "autopjese_jaha";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Kontrollo lidhjen
+if ($conn->connect_error) {
+    die("Lidhja dështoi: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Përgatit dhe ekzekuto pyetjen SQL
+    $sql = "SELECT * FROM users WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+
+    // Kontrollojmë nëse fjalëkalimi i dhënë përputhet me atë në bazën e të dhënave
+    if (password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_fullname'] = $user['fullname'];
+
+        // Ridrejto tek Main.html
+        header("Location: ../MainPageHTML/Main.html");
+        exit();
+    } else {
+        echo "<p style='color: red; text-align: center;'>Email ose fjalëkalim i pasaktë!</p>";
+    }
+} else {
+    echo "<p style='color: red; text-align: center;'>Email ose fjalëkalim i pasaktë!</p>";
+}
+
+    $stmt->close();
+}
+
+$conn->close();
 
 ?>
 
@@ -29,7 +75,7 @@ session_start ();
     </header>
 
     <div class="wrapper"> 
-        <form action="../Main.php" method = "POST">
+        <form action="../Login.php" method = "POST">
             <div id="Hyrje">
 
                 <img src="../Images/Logo.jpg" alt="">
@@ -38,12 +84,12 @@ session_start ();
             </div>
             
             <div class="input-box">
-                <input type="text" placeholder="Username"
+                <input type="text" name="username" placeholder="Username" 
                 required>
             </div>
             
             <div class="input-box">
-                <input type="password" placeholder="Password"
+                <input type="password" name="password" placeholder="Password"
                 required>
             </div>
 
@@ -52,7 +98,7 @@ session_start ();
                 </label>
                 <a href="./ForgotPassword.html">Forgot password</a>
             </div>
-            <button type="submit" class="btn"><a href="../Main.html">Login </a></button>
+            <button type="submit" class="btn">Login</button>
 
             <div class="register-link">
                 <p>Don't have an account? 

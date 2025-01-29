@@ -18,20 +18,23 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (fullname, email, password) VALUES ('$fullname', '$email', '$password')";
+    $stmt = $conn->prepare("INSERT INTO users (fullname, email, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $fullname, $email, $password);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Regjistrimi u krye me sukses!";
-        header("Location: LogIn.php");
+    if ($stmt->execute()) {
+        header("Location: Login.php");
+        exit();
     } else {
-        echo "Gabim: " . $sql . "<br>" . $conn->error;
+        echo "Gabim: " . $stmt->error;
     }
+    $stmt->close();
 }
 
-$conn->close();
+    $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,24 +68,19 @@ $conn->close();
             </div>
             
             <div class="input-box1">
-                <input type="text" id="emri" placeholder="Emri" required>
-                <input type="text" id="mbiemri" placeholder="Mbiemri" required>
+                <input type="text" id="fullname" name="fullname" placeholder="Emri" required>
+                
             </div>
             
-    
             <div class="input-box">
-                <input type="email" id="email" placeholder="Email" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
     
             <div class="input-box">
-                <input type="password" id="password" placeholder="Password" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
             </div>
     
-            <div class="input-box">
-                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-            </div>
-    
-            <button type="submit"  class="btn ">Register</a></button>
+            <button type="submit" class="btn ">Register</button>
         </form>
     </div>
     <script src="script.js"></script>
