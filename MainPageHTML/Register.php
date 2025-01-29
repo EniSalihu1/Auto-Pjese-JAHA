@@ -1,10 +1,39 @@
 <?php
+
+include_once 'db_autopjese.php';
+include_once 'User.php';
+
+    if($_SERVER['REQUEST_METHOD']== 'POST'){
+
+        $db = new db_autopjese();
+        $connection = $db->getConnection();
+        $user = new User (db : $connection);
+
+        $emri = $_POST['emri'];
+        $mbiemri = $_POST['mbiemri'];
+        $email = $_POST['email'];
+        $phone_number = $_POST['phone_number'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+
+        if($user->register(emri : $emri, mbiemri : $mbiemri, email : $email, phone_number: $phone_number, password:$password, confirm_password:$confirm_password)){
+            header(header:"Location: LogIn.php");
+            exit;
+        }else{
+            echo "Error registering user!";
+        }
+    }
+
+/* kodi i jem
+include 'db_autopjese.php'; // Lidhja me databazën
+
 session_start();
-include 'db_autopjese.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fullname = trim($_POST['fullname']);
+    $name = trim($_POST['name']);
+    $surname = trim($_POST['surname']);
     $email = trim($_POST['email']);
+    $phone_number = trim($_POST['phone_number']);
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
     $role = 'user';
@@ -23,14 +52,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $name = $nameParts[0];   // Emri
-    $surname = $nameParts[1]; // Mbiemri
+    $name = $_POST['name'];   
+    $surname = $_POST['surname'];  
 
     // Validimi i email-it
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Invalid email format.";
         exit;
     }
+     // Kontrollo nëse emaili është regjistruar më parë
+     $emailCheck = $conn->prepare("SELECT id FROM users WHERE email = ?");
+     $emailCheck->bind_param("s", $email);
+     $emailCheck->execute();
+     $emailCheck->store_result();
+ 
+     if ($emailCheck->num_rows > 0) {
+         echo "Email is already registered.";
+         exit;  // Nëse emaili ekziston, ndalojmë regjistrimin
+     }
+     $emailCheck->close();
 
     // Kontrollo nëse fjalëkalimet përputhen
     if ($password !== $confirmPassword) {
@@ -42,19 +82,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Përgatitja e query-t të sigurtë për insert
-    $stmt = $conn->prepare("INSERT INTO users (name, surname, email, password, role) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO users (name, surname, email, phone_number, password, role) VALUES (?, ?, ?, ?, ?)");
+    if ($stmt === false) {
+        die('MySQL prepare failed: ' . $conn->error);
+    }
     $stmt->bind_param("sssss", $name, $surname, $email, $hashedPassword, $role);
 
+    // Ekzekuto pyetjen dhe verifiko nëse u regjistrua përdoruesi
     if ($stmt->execute()) {
-        header("Location: Login.php");
+        echo "User registered successfully.";
+        header("Location: Login.html");
         exit;
     } else {
         echo "Error: " . $stmt->error;
     }
-
     $stmt->close();
     $conn->close();
-}
+}*/
 ?>
 
 
@@ -71,49 +115,68 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <header class="nav">
 
-        <a href="./Main.php">
+        <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
         <ul>
-            <li><a href="../MainPageHTML/Main.php">Home</a></li>
-            <li><a href="../MainPageHTML/News.php">News</a></li>
-            <li><a href="../MainPageHTML/Produkt.php">Products</a></li>
-            <li><a href="../MainPageHTML/AboutUs.php">About Us</a></li>
-            <li><a href="../MainPageHTML/Contact.php">Contact Us</a></li>
+            <li><a href="../MainPageHTML/Main.html">Home</a></li>
+            <li><a href="../MainPageHTML/News.html">News</a></li>
+            <li><a href="../MainPageHTML/Produkt.html">Products</a></li>
+            <li><a href="../MainPageHTML/AboutUs.html">About Us</a></li>
+            <li><a href="../MainPageHTML/Contact.html">Contact Us</a></li>
         </ul>
     </header>
     
     <div class="wrapper"> 
-        <form id="registerForm" action="../Index2.php/Register.php" method="POST">
+        <form id="registerForm" action="Register.php" method="POST">
             <div id="Hyrje">
                 <img src="../Images/Logo.jpg" alt="">
                 <h1>Register Here!</h1>
             </div>
-            
+
             <div class="input-box1">
-    <input type="text" id="name" name="name" placeholder="Emri" required>
-</div>
+        <input type="text" name="name" placeholder="Emri"  required>
+    </div>
 
-<div class="input-box1">
-    <input type="text" id="surname" name="surname" placeholder="Mbiemri" required>
-</div>
+    <div class="input-box1">
+        <input type="text" name="surname" placeholder="Mbiemri" required>
+    </div>
 
-<div class="input-box">
+    <div class="input-box">
     <input type="email" id="email" name="email" placeholder="Email" required>
-</div>
+    </div>
 
-<div class="input-box">
+    <div class="input-box">
     <input type="text" id="phone_number" name="phone_number" placeholder="Numri i telefonit" required>
-</div>
+    </div>
 
-<div class="input-box">
+    <div class="input-box">
     <input type="password" id="password" name="password" placeholder="Password" required>
-</div>
+    </div>
 
-<div class="input-box">
+    <div class="input-box">
     <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+    </div>
+    <button type="submit" class="btn ">Register</button>
+        
+</form>
+
 </div>
+    
+    <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me
+                </label>
+                <a href="./ForgotPassword.html">Forgot password</a>
+            </div>
+            <button type="submit" class="btn"><a href="./Main.html">Login </a></button>
+
+            <div class="register-link">
+                <p>Don't have an account? 
+                    <a href="../MainPageHTML/Register.html"> Register</a></p>
+            </div>  
+    </div>
     <script src="script.js"></script>
+    
     <div class="footer">
 
         <div class="footer-container">
@@ -131,7 +194,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="footer-section social">
                 <h4>Na Ndiqni ne faqen tone ne:</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
+                        <a href="https://www.facebook.com/profile.html?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
                     </div>
             </div>
         </div>

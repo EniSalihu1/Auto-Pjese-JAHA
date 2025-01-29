@@ -1,50 +1,63 @@
 <?php
-include 'db_autopjese.php'; // Lidhja me databazën
 
 session_start();
+include_once 'db_autopjese.php';
+include_once 'User.php';
 
-if (isset($_SESSION['email'])) {
-    header("Location: Main.php");
-    exit;
-}
+if($_SERVER['REQUEST_METHOD']== 'POST'){
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = trim($_POST['email']);
+    $db = new db_autopjese();
+    $connection = $db->getConnection();
+    $user = new User (db : $connection);
+
+    
+    $email = $_POST['email'];
     $password = $_POST['password'];
+    
 
-    if (!empty($email) && !empty($password)) {
-        // Përgatit query për të marrë fjalëkalimin nga databaza bazuar në email
-        $stmt = $conn->prepare("SELECT id, name, surname, password FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
-
-        if ($stmt->num_rows > 0) {
-            $stmt->bind_result($id, $name, $surname, $hashedPassword);
-            $stmt->fetch();
-
-            // Kontrollo nëse fjalëkalimi është i saktë
-            if (password_verify($password, $hashedPassword)) {
-                // Ruaj të dhënat në sesion
-                $_SESSION['id'] = $id;
-                $_SESSION['email'] = $email;
-                $_SESSION['name'] = $name;
-                $_SESSION['surname'] = $surname;
-
-                header("Location: Main.php");
-                exit;
-            } else {
-                $error = "Invalid email or password.";
-            }
-        } else {
-            $error = "Invalid email or password.";
-        }
-        $stmt->close();
-    } else {
-        $error = "Please fill in both fields.";
+    if($user->login(email : $email,  password : $password)){
+        header(header:"Location: Main.php");
+        exit;
+    }else{
+        echo "Invalid login credentials!";
     }
-    $conn->close();
 }
+
+
+
+/* kodi vet
+include 'db_autopjese.php';
+
+if (isset($_POST['loginbtn'])) {
+  if (empty($_POST['email']) || empty($_POST['password'])) {
+    echo "Please fill are required fields!";
+  } else {
+    //validate
+    $username = $_POST['email']; // = $username ="altinasalihu"
+    $password = $_POST['password']; // = $password = "altina123"
+
+    include_once 'users.php';
+    $i = 0;
+    foreach ($users as $user) {
+      $i++;
+      if ($user['email'] == $email && $user['password'] == $password) {
+        session_start();
+
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
+        $_SESSION['role'] = $user['role'];
+        $_SESSION['loginTime'] = date("H:i:s");
+        header("location:home.php");
+        exit();
+      } else {
+        if ($i == sizeof($users)) {
+          echo "Incorrect Username or Password!";
+          exit();
+        }
+      }
+    }
+  }
+}*/
 ?>
 
 
@@ -59,48 +72,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header class="nav">
 
-        <a href="./Main.php">
+        <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
         <ul>
-            <li><a href="../MainPageHTML/Main.php">Home</a></li>
-            <li><a href="../MainPageHTML/News.php">News</a></li>
-            <li><a href="../MainPageHTML/Produkt.php">Products</a></li>
-            <li><a href="../MainPageHTML/AboutUs.php">About Us</a></li>
-            <li><a href="../MainPageHTML/Contact.php">Contact Us</a></li>
+            <li><a href="../MainPageHTML/Main.html">Home</a></li>
+            <li><a href="../MainPageHTML/News.html">News</a></li>
+            <li><a href="../MainPageHTML/Produkt.html">Products</a></li>
+            <li><a href="../MainPageHTML/AboutUs.html">About Us</a></li>
+            <li><a href="../MainPageHTML/Contact.html">Contact Us</a></li>
         </ul>
     </header>
 
     <div class="wrapper"> 
-        <form action="../Login.php" method = "POST">
+        <form action="Login.php" method="POST">
             <div id="Hyrje">
 
                 <img src="../Images/Logo.jpg" alt="">
                 <h1>Log In</h1>
 
             </div>
-            
+
             <div class="input-box">
-                <input type="text" name="username" placeholder="Username" 
+                <input type="email" name="email" placeholder="Email"
                 required>
             </div>
-            
+
             <div class="input-box">
                 <input type="password" name="password" placeholder="Password"
                 required>
             </div>
 
             <div class="remember-forgot">
-                <label><input type="checkbox"> Remember me
-                </label>
+                <label><input type="checkbox"> Remember me</label>
                 <a href="./ForgotPassword.php">Forgot password</a>
             </div>
             <button type="submit" class="btn">Login</button>
 
             <div class="register-link">
                 <p>Don't have an account? 
-                    <a href="./Register.php"> Register</a></p>
-            </div>  
+                    <a href="../MainPageHTML/Register.php"> Register</a></p>
+            </div>
 
         </form>
     </div>
@@ -122,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="footer-section social">
                 <h4>Na Ndiqni ne faqen tone ne:</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
+                        <a href="https://www.facebook.com/profile.html?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
                     </div>
             </div>
         </div>
