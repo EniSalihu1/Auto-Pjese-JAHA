@@ -14,7 +14,6 @@ body{
    padding: 10px 20px;
    margin: 0px;
 }
-
 .nav img{
 
     width: 50px;
@@ -27,9 +26,7 @@ body{
    padding: 0;
    display: flex;
    align-items: center;
-
 }
-
 .nav li {
    margin: 0 13px;
 }
@@ -38,22 +35,53 @@ body{
    text-decoration: none;
    font-size: 16px;
 }
+/*Butoni ne nav*/
+.auth-button {
+   font-family: 'Courier New', Courier, monospace;
+   padding: 8px 16px;
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+   font-weight: bold;
+   cursor: pointer;
+   transition: background-color 0.3s, transform 0.2s;
+   color: white; /* Siguron që teksti të jetë i bardhë */
+}
+
+/* Stili për butonin "Log In" */
+.auth-button.login {
+   background-color: #054442; /* Jeshile e errët */
+}
+
+.auth-button.login:hover {
+   background-color: #03312E; /* Jeshile më e errët në hover */
+   transform: scale(1.05);
+}
+
+/* Stili për butonin "Log Out" */
+#LogOutButton {
+   background-color: #C70039; /* E kuqe e fortë */
+}
+
+#LogOutButton:hover {
+   background-color: #900C3F; /* E kuqe më e errët në hover */
+   transform: scale(1.05);
+}
 #LogIn button {
-   background-color: #054442; 
+   background-color: #054442;
    font-family: 'Courier New', Courier, monospace;
    padding: 6px 12px;
    border: none;
    border-radius: 5px;
    font-size: 16px;
-   font-weight: bold; 
-   color: #000000; 
+   font-weight: bold;
+   color: #ffffff;
 }
 
 #Linqet img{
    width: 18px;
    height: 18px;
    border-radius: 18px;
-
 }
 
 /* Kontaineri */
