@@ -27,15 +27,5 @@ class db_autopjese{
     }
 
 }
-/*Kodi qe e kom shkru un
 
-// Krijo lidhjen me bazën e të dhënave
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Kontrollo nëse ka ndodhur gabim në lidhje
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-?>
-*/
 ?>

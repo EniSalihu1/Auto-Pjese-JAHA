@@ -25,39 +25,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
 
 
 
-/* kodi vet
-include 'db_autopjese.php';
 
-if (isset($_POST['loginbtn'])) {
-  if (empty($_POST['email']) || empty($_POST['password'])) {
-    echo "Please fill are required fields!";
-  } else {
-    //validate
-    $username = $_POST['email']; // = $username ="altinasalihu"
-    $password = $_POST['password']; // = $password = "altina123"
-
-    include_once 'users.php';
-    $i = 0;
-    foreach ($users as $user) {
-      $i++;
-      if ($user['email'] == $email && $user['password'] == $password) {
-        session_start();
-
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
-        $_SESSION['role'] = $user['role'];
-        $_SESSION['loginTime'] = date("H:i:s");
-        header("location:home.php");
-        exit();
-      } else {
-        if ($i == sizeof($users)) {
-          echo "Incorrect Username or Password!";
-          exit();
-        }
-      }
-    }
-  }
-}*/
 ?>
 
 
