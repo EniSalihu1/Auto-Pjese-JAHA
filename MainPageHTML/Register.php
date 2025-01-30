@@ -45,11 +45,11 @@ include_once 'User.php';
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
         <ul>
-            <li><a href="../MainPageHTML/Main.html">Home</a></li>
-            <li><a href="../MainPageHTML/News.html">News</a></li>
-            <li><a href="../MainPageHTML/Produkt.html">Products</a></li>
-            <li><a href="../MainPageHTML/AboutUs.html">About Us</a></li>
-            <li><a href="../MainPageHTML/Contact.html">Contact Us</a></li>
+            <li><a href="Main.php">Home</a></li>
+            <li><a href="News.php">News</a></li>
+            <li><a href="Produkt.php">Products</a></li>
+            <li><a href="AboutUs.php">About Us</a></li>
+            <li><a href="Contact.php">Contact Us</a></li>
         </ul>
     </header>
     

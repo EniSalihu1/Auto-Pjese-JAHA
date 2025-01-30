@@ -12,14 +12,12 @@
         <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
-        <ul>
-            <li><a href="../MainPageHTML/Main.html">Home</a></li>
-            <li><a href="../MainPageHTML/Produkt.html">Products</a></li>
-            <li><a href="../MainPageHTML/AboutUs.html">About Us</a></li>
-            <li><a href="../MainPageHTML/Contact.html">Contact Us</a></li>
-            <div id="LogIn">
-            <li><button><a href="../MainPageHTML/LogIn.html" id="LogIn button">Log In</a></button></li>
-        </div>
+         <ul>
+            <li><a href="Main.php">Home</a></li>
+            <li><a href="News.php">News</a></li>
+            <li><a href="Produkt.php">Products</a></li>
+            <li><a href="AboutUs.php">About Us</a></li>
+            <li><a href="Contact.php">Contact Us</a></li>
         </ul>
     </header>
 

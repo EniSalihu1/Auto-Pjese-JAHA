@@ -1,6 +1,17 @@
 <?php
 session_start();
+
+$isLoggedIn = isset($_SESSION['user_id']); 
+
+if(!isset($_SESSION['user_id'])){
+    header('Location: LogIn.php'); 
+    exit();
+}
+/*session_start();
+
+$isLoggedIn = isset($_SESSION['user_id']);
 $hide = "";
+
 if (!isset($_SESSION['email']))
   header("location:LogIn.php");
 else {
@@ -8,7 +19,8 @@ else {
     $hide = "";
   else
     $hide = "hide";
-}
+}*/
+
  ?>
 
 
@@ -24,18 +36,22 @@ else {
      
     <header class="nav">
 
-        <a href="./Main.html">
+        <a href="./Main.php">
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
         <ul>
-            <li><a href="../MainPageHTML/Main.html">Home</a></li>
-            <li><a href="../MainPageHTML/News.html">News</a></li>
-            <li><a href="../MainPageHTML/Produkt.html">Products</a></li>
-            <li><a href="../MainPageHTML/AboutUs.html">About Us</a></li>
-            <li><a href="../MainPageHTML/Contact.html">Contact Us</a></li>
-            <div id="LogIn">
-            <li><button><a href="../MainPageHTML/LogIn.html" id="LogIn button">Log In</a></button></li>
-        </div>
+            <li><a href="Main.php">Home</a></li>
+            <li><a href="News.php">News</a></li>
+            <li><a href="Produkt.php">Products</a></li>
+            <li><a href="AboutUs.php">About Us</a></li>
+            <li><a href="Contact.php">Contact Us</a></li>
+            <li>
+                <?php if ($isLoggedIn): ?>
+                <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
+                 <?php else: ?>
+                <button><a href="login.php" id="LogInButton">Log In</a></button>
+                <?php endif; ?>
+            </li>
         </ul>
     </header>
 
