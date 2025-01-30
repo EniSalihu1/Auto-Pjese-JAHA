@@ -8,7 +8,6 @@
         public function __construct($db) {
             $this-> conn = $db;
         }
-
        
         public function register($emri, $mbiemri, $email, $phone_number, $password, $confirm_password): bool {
             if ($password !== $confirm_password) {
