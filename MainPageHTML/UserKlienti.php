@@ -7,11 +7,11 @@ class UserKlienti {
         $this->conn = $db;
     }
 
-    public function register($emri, $email, $message): bool {
-        $query = "INSERT INTO {$this->table_name} (emri, email, message) VALUES (:emri, :email, :message)";
+    public function register($name, $email, $message): bool {
+        $query = "INSERT INTO {$this->table_name} (name, email, message) VALUES (:name, :email, :message)";
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bindValue(':emri', $emri);
+        $stmt->bindValue(':name', $name);
         $stmt->bindValue(':email', $email);
         $stmt->bindValue(':message', $message);
 

@@ -11,11 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $connection = $db->getConnection();
     $user = new UserKlienti($connection);
 
-    $emri = $_POST['emri'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    if ($user->register($emri, $email, $message)) {
+    if ($user->register($name, $email, $message)) {
         header("Location: Contact.php");
         exit;
     } else {
@@ -64,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="right-section">
             <h2>CONTACT US</h2>
             <form id="ContactUs" action="Contact.php" method="POST">
-                <input type="text" name="emri" placeholder="Shkruaj emrin tende" required>
-                <input type="email" name="email" placeholder="Shkruani nje email valide" required>
-                <textarea name="message" placeholder="Mesazhi juaj"></textarea>
+                <input type="text" name="name" placeholder="name" required>
+                <input type="email" name="email" placeholder="email" required>
+                <textarea name="message" placeholder="message"></textarea>
                 <button type="submit" class="btn">SUBMIT</button>
             </form>
         </div>
