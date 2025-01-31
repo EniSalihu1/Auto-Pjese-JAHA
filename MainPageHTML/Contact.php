@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$isLoggedIn = isset($_SESSION['user_id']);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +27,13 @@
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
+            <li>
+                <?php if ($isLoggedIn): ?>
+                <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
+                 <?php else: ?>
+                <button><a href="login.php" id="LogInButton">Log In</a></button>
+                <?php endif; ?>
+            </li>
         </ul>
     </header>
     <div class="container">

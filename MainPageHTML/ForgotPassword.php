@@ -13,13 +13,7 @@
         <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
-        <ul>
-            <li><a href="Main.php">Home</a></li>
-            <li><a href="News.php">News</a></li>
-            <li><a href="Produkt.php">Products</a></li>
-            <li><a href="AboutUs.php">About Us</a></li>
-            <li><a href="Contact.php">Contact Us</a></li>
-        </ul>
+    
     </header>
     <div class="wrapper">
        <form action="">
