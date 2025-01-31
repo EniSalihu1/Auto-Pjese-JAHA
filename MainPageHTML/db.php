@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'autopjese-jaha';
+$dbname = 'autopjese_jaha';
 $username = 'root'; 
 $password = '';
 
