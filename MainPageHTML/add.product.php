@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-include 'db.php'; 
+include '<db_products class=""></db_products>php'; 
 ?>
 
 <!DOCTYPE html>
