@@ -8,16 +8,15 @@
         public function __construct($db) {
             $this-> conn = $db;
         }
-
        
         public function register($emri, $mbiemri, $email, $phone_number, $password, $confirm_password): bool {
             if ($password !== $confirm_password) {
-                return false; 
+                throw new Exception("Fjalëkalimet nuk përputhen.");
             }
-           
+        
             $query = "INSERT INTO {$this->table_name} (emri, mbiemri, email, phone_number, password) VALUES (:emri, :mbiemri, :email, :phone_number, :password)";
             $stmt = $this->conn->prepare($query);
-                
+        
             $stmt->bindValue(':emri', $emri);
             $stmt->bindValue(':mbiemri', $mbiemri);
             $stmt->bindValue(':email', $email);
@@ -27,7 +26,7 @@
             if ($stmt->execute()) {
                 return true;
             } else {
-                return false;
+                throw new Exception("Gabim gjatë regjistrimit.");
             }
         }
 
