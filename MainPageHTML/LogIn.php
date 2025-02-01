@@ -4,6 +4,7 @@ include_once 'db_autopjese.php';
 include_once 'User.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+<<<<<<< HEAD
     $db = new db_autopjese();
     $connection = $db->getConnection();
     $user = new User($connection);
@@ -23,6 +24,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+=======
+    // Kontrollo nëse fushat e email-it dhe fjalëkalimit janë bosh
+    if (empty($_POST['email']) || empty($_POST['password'])) {
+        $error_message = "Ju keni gabuar përdoruesin ose fjalëkalimin. <a href='LogIn.php'>Kliko për të provuar prapë</a>";
+    } else {
+        $db = new db_autopjese();
+        $connection = $db->getConnection();
+        $user = new User(db: $connection);
+
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        if ($user->login(email: $email, password: $password)) {
+            // Vendos një cookie për 30 ditë
+            setcookie("user_email", $email, time() + (86400 * 2), "/");
+
+            // Ruaj email-in e përdoruesit në sesion
+            $_SESSION['user'] = $email;
+
+            // Ridrejto në faqen kryesore
+            header("Location: Main.php");
+            exit();
+        } else {
+            $error_message = "Invalid login credentials! <a href='LogIn.php'>Kliko për të provuar prapë</a>";
+        }
+    }
+}
+?>
+
+>>>>>>> 20004f1348be1e9e84e5eb76e8f1803dc1b27a87
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,40 +61,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Pjese JAHA</title>
     <link rel="stylesheet" href="../MainPageCss/LogIn.Css">
+    <style>
+        .error-message {
+            background-color: #ffebee; /* Ngjyrë e kuqe e hapur */
+            color: #c62828; /* Ngjyrë e kuqe e errët */
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #c62828;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        .error-message a {
+            color: #1565c0; /* Ngjyrë blu */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .error-message a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header class="nav">
-
         <a href="./Main.html">
-        <img src="../Images/Logo.jpg" alt="Logo">
-    </a>
+            <img src="../Images/Logo.jpg" alt="Logo">
+        </a>
         <ul>
             <li><a href="Main.php">Home</a></li>
             <li><a href="News.php">News</a></li>
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
-            
         </ul>
     </header>
+
+    <?php if (!empty($error_message)): ?>
+        <div class="error-message">
+            <?php echo $error_message; ?>
+        </div>
+    <?php endif; ?>
 
     <div class="wrapper"> 
         <form action="Login.php" method="POST">
             <div id="Hyrje">
-
                 <img src="../Images/Logo.jpg" alt="">
                 <h1>Log In</h1>
-
             </div>
 
             <div class="input-box">
-                <input type="email" name="email" placeholder="Email"
-                required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
 
             <div class="input-box">
-                <input type="password" name="password" placeholder="Password"
-                required>
+                <input type="password" name="password" placeholder="Password" required>
             </div>
 
             <div class="remember-forgot">
@@ -76,12 +128,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p>Don't have an account? 
                     <a href="Register.php"> Register</a></p>
             </div>
-
         </form>
     </div>
     
     <div class="footer">
-
         <div class="footer-container">
             <div class="footer-section">
                 <h4>Rreth Nesh</h4>
@@ -96,18 +146,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="footer-section social">
                 <h4>Na Ndiqni ne faqen tone ne:</h4>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.html?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
-                    </div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.html?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 AutoPjesa. Të gjitha të drejtat e rezervuara.</p>
         </div>
-
     </div>
-
-
-    
 </body>
 </html>
