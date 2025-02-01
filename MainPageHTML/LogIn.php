@@ -1,28 +1,106 @@
 <?php
-
 session_start();
 include_once 'db_autopjese.php';
 include_once 'User.php';
 
-if($_SERVER['REQUEST_METHOD']== 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+   
+    if (empty($_POST['email']) || empty($_POST['password'])) {
+        echo '
+        <!DOCTYPE html>
+        <html lang="sq">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Gabim</title>
+            <style>
+                .error-message {
+                    background-color: #ffebee; /* Ngjyrë e kuqe e hapur */
+                    color: #c62828; /* Ngjyrë e kuqe e errët */
+                    padding: 20px;
+                    border-radius: 5px;
+                    border: 1px solid #c62828;
+                    text-align: center;
+                    font-family: Arial, sans-serif;
+                    max-width: 400px;
+                    margin: 50px auto;
+                }
+                .error-message a {
+                    color: #1565c0; /* Ngjyrë blu */
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                .error-message a:hover {
+                    text-decoration: underline;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="error-message">
+                Ju keni gabuar përdoruesin ose fjalëkalimin. <a href="LogIn.php">Kliko për të provuar prapë</a>
+            </div>
+        </body>
+        </html>
+        ';
+        exit();
+    }
 
     $db = new db_autopjese();
     $connection = $db->getConnection();
-    $user = new User (db : $connection);
+    $user = new User(db: $connection);
 
-    
     $email = $_POST['email'];
     $password = $_POST['password'];
-    
 
-    if($user->login(email : $email,  password : $password)){
-        header(header:"Location: Main.php");
-        exit;
-    }else{
-        echo "Invalid login credentials!";
+    if ($user->login(email: $email, password: $password)) {
+        
+        setcookie("user_email", $email, time() + (86400 * 2), "/");
+
+       
+        $_SESSION['user'] = $email;
+
+      
+        header("Location: Main.php");
+        exit();
+    } else {
+        echo '
+        <!DOCTYPE html>
+        <html lang="sq">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Gabim</title>
+            <style>
+                .error-message {
+                    background-color: #ffebee; /* Ngjyrë e kuqe e hapur */
+                    color: #c62828; /* Ngjyrë e kuqe e errët */
+                    padding: 20px;
+                    border-radius: 5px;
+                    border: 1px solid #c62828;
+                    text-align: center;
+                    font-family: Arial, sans-serif;
+                    max-width: 400px;
+                    margin: 50px auto;
+                }
+                .error-message a {
+                    color: #1565c0; /* Ngjyrë blu */
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                .error-message a:hover {
+                    text-decoration: underline;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="error-message">
+                Invalid login credentials! <a href="LogIn.php">Kliko për të provuar prapë</a>
+            </div>
+        </body>
+        </html>
+        ';
     }
 }
-
 ?>
 
 
