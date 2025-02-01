@@ -11,7 +11,7 @@ class db_products{
     public function __construct(){
 
         try{
-            
+
             $this ->conn = new PDO(dsn:"mysql:host ={$this->host};dbname={$this->dbname}",username:$this->username,password:$this->password);
             $this ->conn -> setAttribute(attribute: PDO::ATTR_ERRMODE, value:PDO::ERRMODE_EXCEPTION);
 
@@ -27,5 +27,3 @@ class db_products{
     }
 
 }
-
-?>

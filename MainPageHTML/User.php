@@ -53,6 +53,19 @@
             return false;
         }
 
+        
+        public function getUserRole($email) {
+            $query = "SELECT role FROM {$this->table_name} WHERE email = :email";  // Përdorim :email për PDO
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':email', $email); // Përdorim bindValue për PDO
+            $stmt->execute();
+            
+            if ($stmt->rowCount() > 0) {
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $result['role'] ?? 'client';  // Nëse nuk ka rol, kthejmë 'client' si vlerë default
+            }
+            return 'client'; // Nëse nuk ka rezultat, kthejmë 'client'
+        }
     }
 
 ?>

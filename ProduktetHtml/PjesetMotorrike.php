@@ -2,7 +2,7 @@
 session_start();
 
 $isLoggedIn = isset($_SESSION['user_id']);
-
+$role = $_SESSION['role'] ?? 'client';
 ?>
 
 
@@ -50,76 +50,95 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <img src="../Images/Produkti10PM.webp" alt="Product 1">
             <h2> Radiator</h2>
             <p>79.99€</p>
-            <button>Buy Now</button>
+           
         </div>
         <div class="product-item">
             <img src="../Images/Produkti11PM.webp" alt="Product 2">
             <h2>Disqe </h2>
             <p>99.99€</p>
-            <button>Buy Now</button>
+            
         </div>
         <div class="product-item">
             <img src="../Images/Produkti12PM.webp" alt="Product 3" >
             <h2>Gurtne</h2>
             <p>39.99€</p>
-            <button>Buy Now</button>
+             
         </div>
         <div class="product-item">
             <img src="../Images/Produkti13PM.webp" alt="Product 4">
             <h2>Alternatori</h2>
             <p>69.99€</p>
-            <button>Buy Now</button>
+             
         </div>
         <div class="product-item">
             <img src="../Images/Produkti14PM.webp" alt="Product 5">
             <h2>Pompe e Ujit</h2>
             <p>109.99€</p>
-            <button>Buy Now</button>
+          
         </div>
         <div class="product-item">
             <img src="../Images/Produkti15PM.webp" alt="Product 6" >
             <h2>Termostat</h2>
             <p>149.99€</p>
-            <button>Buy Now</button>
+        
         </div>
         <div class="product-item">
             <img src="../Images/Produkti16PM.webp" alt="Product 7">
             <h2>Starter</h2>
             <p>54.99€</p>
-            <button>Buy Now</button>
+          
         </div>
         <div class="product-item">
             <img src="../Images/Produkti17PM.webp" alt="Product 8">
             <h2>Filter i Vajit</h2>
             <p>14.99€</p>
-            <button>Buy Now</button>
+           
         </div>
         <div class="product-item">
             <img src="../Images/Produkti18PM.webp" alt="Product 9">
             <h2>Filter i Klimes</h2>
             <p>9.99€</p>
-            <button>Buy Now</button>
+            
         </div>
         <div class="product-item">
             <img src="../Images/Produkti19PM.webp" alt="Product 10">
             <h2>Filter i Ajrit</h2>
             <p>19.99€</p>
-            <button>Buy Now</button>
+           
         </div>
         <div class="product-item">
             <img src="../Images/Produkti20PM.webp" alt="Product 11">
             <h2>Vaj i Motorrit</h2>
             <p>8.99€</p>
-            <button>Buy Now</button>
+          
         </div>
         <div class="product-item">
             <img src="../Images/Produkti21PM.webp" alt="Product 12">
             <h2>Armotizera</h2>
             <p>179.99€</p>
-            <button>Buy Now</button>
+            
         </div>
     </div>
 </main>
+
+<?php if ($role === 'admin'): ?>
+    <div class="add-button-container">
+        <button class="add-news-btn" onclick="toggleForm()"> +Shto Produkt</button>
+
+        <form id="news-form" action="Produkt.php" method="POST" enctype="multipart/form-data" style="display: none;">
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="Images/*" required>
+         
+            <label for="titulli">Titulli:</label>
+            <input type="text" id="titulli" name="titulli" required>
+
+            <label for="cmimi">Cmimi:</label>
+            <textarea id="cmimi" name="cmimi" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+<?php endif; ?>
 
 <!-- Footer -->
 <div class="footer">

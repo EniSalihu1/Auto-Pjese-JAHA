@@ -1,31 +1,28 @@
 <?php
-
 session_start();
 include_once 'db_autopjese.php';
 include_once 'User.php';
 
-if($_SERVER['REQUEST_METHOD']== 'POST'){
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db = new db_autopjese();
     $connection = $db->getConnection();
-    $user = new User (db : $connection);
+    $user = new User($connection);
 
-    
     $email = $_POST['email'];
     $password = $_POST['password'];
-    
 
-    if($user->login(email : $email,  password : $password)){
-        header(header:"Location: Main.php");
+    // Kontrollo nëse logimi është i suksesshëm
+    if ($user->login($email, $password)) {
+        // Përdoruesi është loguar, ruajmë rolin në sesion
+        $_SESSION['email'] = $email;
+        $_SESSION['role'] = $user->getUserRole($email); // Ruaj rolin nga tabela
+        header("Location: Main.php");
         exit;
-    }else{
+    } else {
         echo "Invalid login credentials!";
     }
 }
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

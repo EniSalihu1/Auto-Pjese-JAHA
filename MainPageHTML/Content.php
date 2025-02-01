@@ -1,6 +1,6 @@
 <?php
 require_once "db_autopjese.php";
-
+/*
 class Content {
     private $conn;
 

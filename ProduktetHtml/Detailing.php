@@ -2,7 +2,7 @@
 session_start();
 
 $isLoggedIn = isset($_SESSION['user_id']);
-
+$role = $_SESSION['role'] ?? 'client';
 ?>
 
 
@@ -47,76 +47,103 @@ $isLoggedIn = isset($_SESSION['user_id']);
                 <img src="../Images/Produkti22D.webp" alt="Product 1">
                 <h2> Parfume</h2>
                 <p>4.99€</p>
-                <button>Buy Now</button>
+ 
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti23D.webp" alt="Product 2">
                 <h2>Lecke Mikrofiber </h2>
                 <p>24.99€</p>
-                <button>Buy Now</button>
+                
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti24D.webp" alt="Product 3" >
                 <h2>Sfungjer Mikrofiber</h2>
                 <p>7.99€</p>
-                <button>Buy Now</button>
+                
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti25D.webp" alt="Product 4">
                 <h2>Makine Poliri</h2>
                 <p>69.99€</p>
-                <button>Buy Now</button>
+               
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti26D.webp" alt="Product 5">
                 <h2>Shampon</h2>
                 <p>4.99€</p>
-                <button>Buy Now</button>
+               
             </div>
             <div class="product-item">
                 <img src="../Images/Produkt27D.webp" alt="Product 6" >
                 <h2>Restaurues plastike</h2>
                 <p>4.99€</p>
-                <button>Buy Now</button>
+                
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti28D.jpg" alt="Product 7">
                 <h2>Shkume per lekure</h2>
                 <p>9.99€</p>
-                <button>Buy Now</button>
+               
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti29D.jpg" alt="Product 8">
                 <h2>Brushë për pastrim </h2>
                 <p>3.99€</p>
-                <button>Buy Now</button>
+              
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti30D.jpg" alt="Product 9">
                 <h2>Furqe Pastrimi</h2>
                 <p>1.99€</p>
-                <button>Buy Now</button>
+                
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti31D.jpg" alt="Product 10">
                 <h2>Brushe per Fellne</h2>
                 <p>19.99€</p>
-                <button>Buy Now</button>
+                
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti32.jpg" alt="Product 11">
                 <h2>Shkelqyes Gomash</h2>
                 <p>14.99€</p>
-                <button>Buy Now</button>
+              
             </div>
             <div class="product-item">
                 <img src="../Images/Produkti33D.jpg" alt="Product 12">
                 <h2>Pastrues Xhami</h2>
                 <p>3.99€</p>
-                <button>Buy Now</button>
+                
             </div>
         </div>
     </main>
+ 
+<!-- Butoni shto -->
+<?php if ($role === 'admin'): ?>
+    <div class="add-button-container">
+        <button class="add-news-btn" onclick="toggleForm()"> +Shto Produkt</button>
+
+        <form id="news-form" action="Produkt.php" method="POST" enctype="multipart/form-data" style="display: none;">
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="Images/*" required>
+         
+            <label for="titulli">Titulli:</label>
+            <input type="text" id="titulli" name="titulli" required>
+
+            <label for="cmimi">Cmimi:</label>
+            <textarea id="cmimi" name="cmimi" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+<?php endif; ?>
+
+<script>
+    function toggleForm() {
+        const form = document.getElementById('news-form');
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
 
 <!-- Footer -->
 <div class="footer">
