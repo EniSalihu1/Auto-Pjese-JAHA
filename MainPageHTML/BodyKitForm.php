@@ -36,24 +36,23 @@ class shtoBodyKit {
         $this->pdo = $pdo;
     }
 
-    // Funksioni për të shtuar një produkt të ri
+ 
     public function add($image, $titulli, $cmimi) {
-        $this->validateImage($image); // Validimi i imazhit
-        $imageName = $this->uploadImage($image); // Ngarkimi i imazhit
-        $this->saveProduct($image, $titulli, $cmimi); // Ruajtja e të dhënave në databazë
+        $this->validateImage($image);  
+        $imageName = $this->uploadImage($image);  
+        $this->saveProduct($image, $titulli, $cmimi);  
     }
 
-    // Validimi i imazhit
+    
     private function validateImage($image) {
         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
         if (!in_array($image['type'], $allowedTypes)) {
             throw new Exception("Lejohen vetëm imazhe të tipit JPEG, PNG, ose GIF.");
         }
     }
-
-    // Ngarkimi i imazhit në server
+ 
     private function uploadImage($image) {
-        $targetDir = "../Images/"; // Drejtoria ku do të ruhen imazhet
+        $targetDir = "../Images/";  
         $imageName = basename($image['name']);
         $targetFilePath = $targetDir . $imageName;
 
@@ -63,17 +62,16 @@ class shtoBodyKit {
 
         return $imageName;
     }
-
-    // Ruajtja e të dhënave në databazë
+ 
     private function saveProduct($image, $titulli, $cmimi) {
         $query = "INSERT INTO produkteteshtuara (image, titulli, cmimi) VALUES (?, ?, ?)";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([$image, $titulli, $cmimi]);
     }
 
-    // Funksioni për të marrë të gjitha produktet nga databaza
+ 
     public function getAllProducts() {
-        $query = "SELECT * FROM produkteteshtuara ORDER BY id DESC"; // Merr të gjitha produktet, të renditura nga më i riu
+        $query = "SELECT * FROM produkteteshtuara ORDER BY id DESC";  
         $stmt = $this->pdo->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

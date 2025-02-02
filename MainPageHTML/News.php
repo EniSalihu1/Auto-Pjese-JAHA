@@ -41,7 +41,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
     <section class="slider">
         <div class="slider-container">
-          <!-- Slide 1 -->
+   
           <div class="slide">
             <img src="../Images/TeknologjiteEReja.jpg" alt="Car Engine">
             <h2>Teknologjia e re në motorë elektrikë</h2>
@@ -50,7 +50,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
                 Ne fakt, ato tashme ekzistojne disa teknologji dhe tendenca qe tregon ky sektor i cili synon te zevendesoje te gjithe motoret me djegie te brendshme ne te ardhmen e afert.</p>
             <a href="https://sq.actualidadmotor.com/trendet-e-teknologjis%C3%AB-automjetet-elektrike/">Lexo më shumë</a>
           </div>
-          <!-- Slide 2 -->
+  
           <div class="slide">
             <img src="../Images/Sistemet e frenimit më të sigurta.jpg" alt="Brake System">
             <h2>Sistemet e frenimit më të sigurta</h2>
@@ -58,7 +58,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
                  Këtu janë disa gjëra që duhet të keni parasysh në lidhje me kujdesin e sistemit të frenimit. </p>
             <a href="https://pjesekembimi24.al/sistemi-i-frenimit/">Lexo më shumë</a>
           </div>
-          <!-- Slide 3 -->
+        
           <div class="slide">
             <img src="../Images/Gomat më të mira për sezonin e dimrit.webp" alt="Tires">
             <h2>Gomat më të mira për sezonin e dimrit</h2>
