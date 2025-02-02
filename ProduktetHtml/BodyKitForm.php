@@ -2,27 +2,30 @@
 
 session_start();
 
-include_once 'db_products.php';
-include_once 'db_BodyKit.php';
+include_once 'db_produktet.php';
+include_once 'UserProduktet.php';
 
 $isLoggedIn = isset($_SESSION['user_id']);
+$role = $_SESSION['role'] ?? 'client';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $db = new db_products();
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $role === 'admin') {
+    $db = new db_produktet();
     $connection = $db->getConnection();
-    $user = new UserKlienti($connection);
+    $user = new shtoBodyKit($connection);
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+    $image = $_FILES['image'];
+    $titulli = $_POST['titulli'];
+    $cmimi = $_POST['cmimi'];
 
-    if ($user->register($name, $email, $message)) {
-        header("Location: Contact.php");
+    try {
+        $user->add($image, $titulli, $cmimi);
+        header("Location: Produkt.php");
         exit;
-    } else {
-        echo "Error registering message!";
+    } catch (Exception $e) {
+        echo "Gabim: " . $e->getMessage();
     }
 }
+
 
 class shtoBodyKit {
 
@@ -62,14 +65,14 @@ class shtoBodyKit {
 
     // Ruajtja e të dhënave në databazë
     private function saveProduct($image, $titulli, $cmimi) {
-        $query = "INSERT INTO bodykitproduktet (image, titulli, cmimi) VALUES (?, ?, ?)";
+        $query = "INSERT INTO produkteteshtuara (image, titulli, cmimi) VALUES (?, ?, ?)";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([$image, $titulli, $cmimi]);
     }
 
     // Funksioni për të marrë të gjitha produktet nga databaza
     public function getAllProducts() {
-        $query = "SELECT * FROM bodykitproduktet ORDER BY id DESC"; // Merr të gjitha produktet, të renditura nga më i riu
+        $query = "SELECT * FROM produkteteshtuara ORDER BY id DESC"; // Merr të gjitha produktet, të renditura nga më i riu
         $stmt = $this->pdo->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

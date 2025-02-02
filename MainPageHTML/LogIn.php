@@ -4,7 +4,6 @@ include_once 'db_autopjese.php';
 include_once 'User.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-<<<<<<< HEAD
     $db = new db_autopjese();
     $connection = $db->getConnection();
     $user = new User($connection);
@@ -23,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Invalid login credentials!";
     }
 }
-?>
-=======
+
     // Kontrollo nëse fushat e email-it dhe fjalëkalimit janë bosh
     if (empty($_POST['email']) || empty($_POST['password'])) {
         $error_message = "Ju keni gabuar përdoruesin ose fjalëkalimin. <a href='LogIn.php'>Kliko për të provuar prapë</a>";
@@ -50,10 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error_message = "Invalid login credentials! <a href='LogIn.php'>Kliko për të provuar prapë</a>";
         }
     }
-}
+
 ?>
 
->>>>>>> 20004f1348be1e9e84e5eb76e8f1803dc1b27a87
 <!DOCTYPE html>
 <html lang="en">
 <head>

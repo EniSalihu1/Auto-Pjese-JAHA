@@ -1,9 +1,26 @@
 <?php
 session_start();
 
+require_once 'UserProduktet.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        $news->add(
+            $_FILES["image"],
+            $_POST["titulli"],
+            $_POST["cmimi"],
+           
+        );
+        header("Location: Produkt.php?success=1");
+        exit();
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
 $isLoggedIn = isset($_SESSION['user_id']);
 $role = $_SESSION['role'] ?? 'client';
-?>
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -106,16 +123,16 @@ $role = $_SESSION['role'] ?? 'client';
 
         <form id="news-form" action="Produkt.php" method="POST" enctype="multipart/form-data" style="display: none;">
             <label for="image">Image:</label>
-            <input type="file" id="image" name="image" accept="Images/*" required>
-         
-            <label for="titulli">Titulli:</label>
-            <input type="text" id="titulli" name="titulli" required>
+            <input type="file" id="image" name="image" accept="image/*" required>
+     
+             <label for="titulli">Titulli:</label>
+             <input type="text" id="titulli" name="titulli" required>
 
-            <label for="cmimi">Cmimi:</label>
-            <textarea id="cmimi" name="cmimi" required></textarea>
+             <label for="cmimi">Cmimi:</label>
+             <input type="text" id="cmimi" name="cmimi" required>
 
-            <button type="submit">Submit</button>
-        </form>
+    <button type="submit">Submit</button>
+</form>
     </div>
 <?php endif; ?>
 
