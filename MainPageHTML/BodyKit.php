@@ -1,23 +1,6 @@
 <?php
 session_start();
 
-require_once 'UserProduktet.php';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    try {
-        $news->add(
-            $_FILES["image"],
-            $_POST["titulli"],
-            $_POST["cmimi"],
-           
-        );
-        header("Location: Produkt.php?success=1");
-        exit();
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}
-
 $isLoggedIn = isset($_SESSION['user_id']);
 $role = $_SESSION['role'] ?? 'client';
  ?>
@@ -125,14 +108,14 @@ $role = $_SESSION['role'] ?? 'client';
             <label for="image">Image:</label>
             <input type="file" id="image" name="image" accept="image/*" required>
      
-             <label for="titulli">Titulli:</label>
-             <input type="text" id="titulli" name="titulli" required>
+            <label for="titulli">Titulli:</label>
+            <input type="text" id="titulli" name="titulli" required>
 
-             <label for="cmimi">Cmimi:</label>
-             <input type="text" id="cmimi" name="cmimi" required>
+            <label for="cmimi">Cmimi:</label>
+            <input type="text" id="cmimi" name="cmimi" required>
 
-    <button type="submit">Submit</button>
-</form>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 <?php endif; ?>
 
@@ -142,6 +125,7 @@ $role = $_SESSION['role'] ?? 'client';
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
     }
 </script>
+
 
 <!-- Footer -->
 <div class="footer">
