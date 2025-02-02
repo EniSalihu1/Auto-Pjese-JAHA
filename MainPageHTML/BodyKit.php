@@ -106,7 +106,9 @@ $role = $_SESSION['role'] ?? 'client';
 <!-- Butoni shto -->
 <?php if ($role === 'admin'): ?>
     <div class="add-button-container">
-        <button class="add-news-btn" onclick="toggleForm()"> +Shto Produkt</button>
+        <button class="Produkt.php" onclick="toggleForm()"> + Shto Produkt</button>
+    </div>
+<?php endif; ?>
 
         <form id="news-form" action="Produkt.php" method="POST" enctype="multipart/form-data" style="display: none;">
             <label for="image">Image:</label>

@@ -39,10 +39,11 @@ $role = $_SESSION['role'] ?? 'client';
     </header>
 
     <main class="products-section">
-
     <?php if ($role === 'admin'): ?>
-            <div class="add-button-container">
-                <button class="Produkt.php" onclick="toggleForm()"> + Shto Produkt</button>
+    <div class="add-button-container">
+        <button class="Produkt.php" onclick="toggleForm()"> + Shto Produkt</button>
+    </div>
+<?php endif; ?>
     
         <div class="Hyrja">
             <h1>Produktet e pranishme: </h1>
