@@ -40,6 +40,13 @@ $role = $_SESSION['role'] ?? 'client';
         <h2>Zgjedheni kategorinë e juaj që jeni të interesuar !</h2>
     </div>
     <main>
+
+    <?php
+        // Vetem admini e sheh kete buton
+        if (isset($_SESSION['user_email']) && $_SESSION['user_email'] == 'admin') {
+            echo "<button class='add-news-btn' onclick='toggleForm()'> + Add News</button>";
+        }
+        ?>
         <section class="filter-product-container">
 
             <div class="product-gallery">
