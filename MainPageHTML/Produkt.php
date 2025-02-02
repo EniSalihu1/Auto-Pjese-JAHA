@@ -19,9 +19,9 @@ $role = $_SESSION['role'] ?? 'client';
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
         <ul>
-            <li><a href="../MainPageHTML/Produkt.html">Products</a></li>
-            <li><a href="../MainPageHTML/AboutUs.html">About Us</a></li>
-            <li><a href="../MainPageHTML/Contact.html">Contact Us</a></li>
+            <li><a href="../MainPageHTML/Produkt.php">Products</a></li>
+            <li><a href="../MainPageHTML/AboutUs.php">About Us</a></li>
+            <li><a href="../MainPageHTML/Contact.php">Contact Us</a></li>
             <?php if ($isLoggedIn): ?>
                 <!-- When the user is logged in -->
                 <li><button><a href="logout.php" id="LogOutButton">Log Out</a></button></li>
