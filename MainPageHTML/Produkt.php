@@ -1,7 +1,7 @@
 <?php
 session_start();
 $isLoggedIn = isset($_SESSION['user_id']);
-$role = $_SESSION['role'] ?? 'client'; // Merr rolin e përdoruesit
+$role = $_SESSION['role'] ?? 'client';  
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +22,10 @@ $role = $_SESSION['role'] ?? 'client'; // Merr rolin e përdoruesit
             <li><a href="../MainPageHTML/AboutUs.php">About Us</a></li>
             <li><a href="../MainPageHTML/Contact.php">Contact Us</a></li>
             <?php if ($isLoggedIn): ?>
-                <!-- Kur përdoruesi është i loguar -->
+               
                 <li><button><a href="logout.php" id="LogOutButton">Log Out</a></button></li>
             <?php else: ?>
-                <!-- Kur përdoruesi nuk është i loguar -->
+                 
                 <li><button><a href="login.php" id="LogInButton">Log In</a></button></li>
             <?php endif; ?>
         </ul>
@@ -35,27 +35,6 @@ $role = $_SESSION['role'] ?? 'client'; // Merr rolin e përdoruesit
         <h2>Zgjedheni kategorinë e juaj që jeni të interesuar !</h2>
     </div>
 
-    <main>
-        <!-- Butoni për adminin për të shtuar produkte -->
-        <?php if ($role === 'admin'): ?>
-            <div class="add-button-container">
-                <button class="Produkt.php" onclick="toggleForm()"> + Shto Produkt</button>
-
-                <!-- Forma për shtimin e produkteve (e fshehur fillimisht) -->
-                <form id="product-form" action="add_product.php" method="POST" enctype="multipart/form-data" style="display: none;">
-                    <label for="image">Imazhi:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
-
-                    <label for="titulli">Titulli:</label>
-                    <input type="text" id="titulli" name="titulli" required>
-
-                    <label for="cmimi">Çmimi:</label>
-                    <input type="text" id="cmimi" name="cmimi" required>
-
-                    <button type="submit">Shto Produktin</button>
-                </form>
-            </div>
-        <?php endif; ?>
 
         <section class="filter-product-container">
             <div class="product-gallery">
@@ -99,12 +78,5 @@ $role = $_SESSION['role'] ?? 'client'; // Merr rolin e përdoruesit
         </div>
     </div>
 
-    <script>
-        // Funksioni për të shfaqur/fshehur formën
-        function toggleForm() {
-            const form = document.getElementById('product-form');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
 </body>
 </html>

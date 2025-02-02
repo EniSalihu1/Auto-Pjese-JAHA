@@ -4,51 +4,33 @@ include_once 'db_autopjese.php';
 include_once 'User.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $db = new db_autopjese();
-    $connection = $db->getConnection();
-    $user = new User($connection);
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // Kontrollo nëse logimi është i suksesshëm
-    if ($user->login($email, $password)) {
-        // Përdoruesi është loguar, ruajmë rolin në sesion
-        $_SESSION['email'] = $email;
-        $_SESSION['role'] = $user->getUserRole($email); // Ruaj rolin nga tabela
-        header("Location: Main.php");
-        exit;
-    } else {
-        echo "Invalid login credentials!";
-    }
-}
-
-    // Kontrollo nëse fushat e email-it dhe fjalëkalimit janë bosh
-    if (empty($_POST['email']) || empty($_POST['password'])) {
-    } else {
+    if (!empty($_POST['email']) && !empty($_POST['password'])) {
         $db = new db_autopjese();
         $connection = $db->getConnection();
-        $user = new User(db: $connection);
+        $user = new User($connection);
 
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if ($user->login(email: $email, password: $password)) {
-            // Vendos një cookie për 30 ditë
+        if ($user->login($email, $password)) {
+            $_SESSION['user_id'] = $user->getUserRole($email); // Ruaj ID e përdoruesit
+            $_SESSION['email'] = $email;
+            $_SESSION['role'] = $user->getUserRole($email); // Merr rolin nga DB
+
+            // Ruaj email-in në cookie për 2 ditë
             setcookie("user_email", $email, time() + (86400 * 2), "/");
 
-            // Ruaj email-in e përdoruesit në sesion
-            $_SESSION['user'] = $email;
-
-            // Ridrejto në faqen kryesore
             header("Location: Main.php");
             exit();
         } else {
             $error_message = "Invalid login credentials! <a href='LogIn.php'>Kliko për të provuar prapë</a>";
         }
+    } else {
+        $error_message = "Ju lutemi plotësoni të gjitha fushat!";
     }
-
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../MainPageCss/LogIn.Css">
     <style>
         .error-message {
-            background-color: #ffebee; /* Ngjyrë e kuqe e hapur */
-            color: #c62828; /* Ngjyrë e kuqe e errët */
+            background-color: #ffebee;  
+            color: #c62828; 
             padding: 20px;
             border-radius: 5px;
             border: 1px solid #c62828;
@@ -70,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin: 20px auto;
         }
         .error-message a {
-            color: #1565c0; /* Ngjyrë blu */
+            color: #1565c0; 
             text-decoration: none;
             font-weight: bold;
         }

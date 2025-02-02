@@ -50,7 +50,7 @@ $role = $_SESSION['role'] ?? 'client';
         <h1>Produktet e pranishme: </h1>
     </div>
     <div class="product-grid">
-        <!-- Product Items -->
+      
         <div class="product-item">
             <img src="../Images/Produkti10PM.webp" alt="Product 1">
             <h2> Radiator</h2>

@@ -47,7 +47,13 @@ class User {
     }
 
     public function getUserRole($email) {
-        return 'client';  // Kthe një vlerë default pa u bazuar në bazën e të dhënave
+        $query = "SELECT role FROM {$this->table_name} WHERE email = :email";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['role'] ?? 'client'; // Nëse nuk gjen rol, kthen 'client'
     }
 }
 ?>

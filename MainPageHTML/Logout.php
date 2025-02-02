@@ -10,7 +10,7 @@ session_destroy();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logging Out...</title>
     <script>
-        // Fshin historinë e shfletuesit dhe ridrejton përdoruesin
+         
         history.pushState(null, null, location.href);
         window.onpopstate = function () {
             history.go(1);

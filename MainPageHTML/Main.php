@@ -24,13 +24,9 @@ $role = $_SESSION['role'] ?? 'client';
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
-            <?php if ($isLoggedIn): ?>
-                <!-- When the user is logged in -->
-                <li><button><a href="logout.php" id="LogOutButton">Log Out</a></button></li>
-                <!-- Admin section -->
-                
+            <?php if ($isLoggedIn): ?>            
+                <li><button><a href="logout.php" id="LogOutButton">Log Out</a></button></li>          
             <?php else: ?>
-                <!-- When the user is not logged in -->
                 <li><button><a href="login.php" id="LogInButton">Log In</a></button></li>
             <?php endif; ?>
         </ul>
