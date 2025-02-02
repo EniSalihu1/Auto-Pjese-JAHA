@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Kontrollo nëse fushat e email-it dhe fjalëkalimit janë bosh
     if (empty($_POST['email']) || empty($_POST['password'])) {
-        $error_message = "Ju keni gabuar përdoruesin ose fjalëkalimin. <a href='LogIn.php'>Kliko për të provuar prapë</a>";
     } else {
         $db = new db_autopjese();
         $connection = $db->getConnection();
