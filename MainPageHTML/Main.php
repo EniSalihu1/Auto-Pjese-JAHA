@@ -15,7 +15,7 @@ $role = $_SESSION['role'] ?? 'client';
 </head>
 <body>
     <header class="nav">
-        <a href="./Main.php">
+        <a href="Main.php">
             <img src="../Images/Logo.jpg" alt="Logo">
         </a>
         <ul>
