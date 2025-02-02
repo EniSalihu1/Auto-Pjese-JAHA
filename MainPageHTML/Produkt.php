@@ -46,16 +46,17 @@ $role = $_SESSION['role'] ?? 'client';
               
                 
                 <div class="product">
-                   <a href="../ProduktetHtml/BodyKit.php"><img src="../Images/Bodykit2.jpg" alt="BodyKit" width="90%"></a>
+                   <a href="../MainPageHTML/BodyKit.php"><img src="../Images/Bodykit2.jpg" alt="BodyKit" width="90%"></a>
                     <h3>Body Kit</h3>
                     
                 </div>
                 <div class="product">
-                   <a href="../ProduktetHtml/PjesetMotorrike.php"><img src="../Images/PjesetMotorrike.jpg" alt="PjesetMotorrike"></a> 
+                   <a href="../MainPageHTML/PjesetMotorrike.php"><img src="../Images/PjesetMotorrike.jpg" alt="PjesetMotorrike"></a> 
                     <h3>Pjesët Motorrike</h3>
+
                 </div>
                 <div class="product">
-                    <a href="../ProduktetHtml/Detailing.php"><img src="../Images/Detailing.jpg" alt="Detailing" width="57%"></a>
+                    <a href="../MainPageHTML/Detailing.php"><img src="../Images/Detailing.jpg" alt="Detailing" width="57%"></a>
                     <h3>Detailing</h3>
                 </div>
             </div>
