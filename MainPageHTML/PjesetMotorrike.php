@@ -15,7 +15,6 @@ $role = $_SESSION['role'] ?? 'client';
     <link rel="stylesheet" href="../ProduktetCss/PjesetMotorrike.Css">
 </head>
 <body>
-
     <!-- Nav -->
     <header class="nav">
         <a href="Main.php">
@@ -40,6 +39,10 @@ $role = $_SESSION['role'] ?? 'client';
 <!-- Permbajtja -->
 
 <main class="products-section">
+
+<?php if ($role === 'admin'): ?>
+            <div class="add-button-container">
+                <button class="Produkt.php" onclick="toggleForm()"> + Shto Produkt</button>
     
     <div class="Hyrja">
         <h1>Produktet e pranishme: </h1>
