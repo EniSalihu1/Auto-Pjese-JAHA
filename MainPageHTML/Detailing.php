@@ -28,6 +28,9 @@ $role = $_SESSION['role'] ?? 'client';
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
+            <?php if ($isLoggedIn && $role === 'admin'): ?>            
+                <li><a href="dashboard.php">Dashboard</a></li>          
+            <?php endif; ?>
             <li>
                 <?php if ($isLoggedIn): ?>
                 <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
@@ -39,11 +42,6 @@ $role = $_SESSION['role'] ?? 'client';
     </header>
 
     <main class="products-section">
-    <?php if ($role === 'admin'): ?>
-    <div class="add-button-container">
-        <button class="Produkt.php" onclick="toggleForm()"> + Shto Produkt</button>
-    </div>
-<?php endif; ?>
     
         <div class="Hyrja">
             <h1>Produktet e pranishme: </h1>
@@ -127,21 +125,24 @@ $role = $_SESSION['role'] ?? 'client';
  
 <!-- Butoni shto -->
 <?php if ($role === 'admin'): ?>
-    <div class="add-button-container">
-        <button class="add-news-btn" onclick="toggleForm()"> +Shto Produkt</button>
-
-        <form id="news-form" action="Produkt.php" method="POST" enctype="multipart/form-data" style="display: none;">
-            <label for="image">Image:</label>
-            <input type="file" id="image" name="image" accept="Images/*" required>
-         
-            <label for="titulli">Titulli:</label>
-            <input type="text" id="titulli" name="titulli" required>
-
-            <label for="cmimi">Cmimi:</label>
-            <textarea id="cmimi" name="cmimi" required></textarea>
-
-            <button type="submit">Submit</button>
-        </form>
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+        <a href="dashboard.php">
+            <button style="
+                background-color: #083a03; 
+                color: white; 
+                padding: 12px 20px; 
+                border: none; 
+                border-radius: 5px; 
+                font-size: 16px; 
+                cursor: pointer; 
+                font-weight: bold; 
+                transition: background-color 0.3s, transform 0.2s;
+            " 
+            onmouseover="this.style.backgroundColor='#0a5504'; this.style.transform='scale(1.05)';"
+            onmouseout="this.style.backgroundColor='#083a03'; this.style.transform='scale(1)';">
+                + Shto Produkt
+            </button>
+        </a>
     </div>
 <?php endif; ?>
 

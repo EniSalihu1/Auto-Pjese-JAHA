@@ -43,6 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
+              <?php if ($isLoggedIn && $role === 'admin'): ?>            
+                <li><a href="dashboard.php">Dashboard</a></li>          
+            <?php endif; ?>
             <li>
                 <?php if ($isLoggedIn): ?>
                     <button><a href="logout.php" id="LogOutButton">Log Out</a></button>

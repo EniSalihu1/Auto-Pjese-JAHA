@@ -26,6 +26,9 @@ $role = $_SESSION['role'] ?? 'client';
         <li><a href="Produkt.php">Products</a></li>
         <li><a href="AboutUs.php">About Us</a></li>
         <li><a href="Contact.php">Contact Us</a></li>
+        <?php if ($isLoggedIn && $role === 'admin'): ?>            
+                <li><a href="dashboard.php">Dashboard</a></li>          
+            <?php endif; ?>
         <li>
             <?php if ($isLoggedIn): ?>
                 <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
@@ -93,45 +96,61 @@ $role = $_SESSION['role'] ?? 'client';
         </div>
     </div>
 
+    <?php
+// Lidhja me databazën
+$conn = new mysqli("localhost", "root", "", "autopjese_jaha");
+
+if ($conn->connect_error) {
+    die("Lidhja dështoi: " . $conn->connect_error);
+}
+
+// Merr produktet nga databaza
+$sql = "SELECT * FROM bodykitproduktet";
+$result = $conn->query($sql);
+?>
+
+<main class="products-section">
+
+    <div class="product-grid">
+        <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="product-item">
+                <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['titulli']; ?>">
+                <h2><?php echo $row['titulli']; ?></h2>
+                <p><?php echo $row['cmimi']; ?>€</p>
+            </div>
+        <?php endwhile; ?>
+    </div>
+</main>
+
+<?php $conn->close(); ?>
+
+
+
    
-    <?php if ($role === 'admin'): ?>
-        <div class="add-button-container">
-            <button id="addProductButton" 
-                    style="background-color: #083a03; color: white; padding: 12px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold; transition: background-color 0.3s, transform 0.2s;" 
-                    onmouseover="this.style.backgroundColor='#062d03'; this.style.transform='scale(1.05)';" 
-                    onmouseout="this.style.backgroundColor='#083a03'; this.style.transform='scale(1)';">
+<?php if ($role === 'admin'): ?>
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+        <a href="dashboard.php">
+            <button style="
+                background-color: #083a03; 
+                color: white; 
+                padding: 12px 20px; 
+                border: none; 
+                border-radius: 5px; 
+                font-size: 16px; 
+                cursor: pointer; 
+                font-weight: bold; 
+                transition: background-color 0.3s, transform 0.2s;
+            " 
+            onmouseover="this.style.backgroundColor='#0a5504'; this.style.transform='scale(1.05)';"
+            onmouseout="this.style.backgroundColor='#083a03'; this.style.transform='scale(1)';">
                 + Shto Produkt
             </button>
-        </div>
-  
-        <form id="product-form" action="Produkt.php" method="POST" enctype="multipart/form-data" style="display: none;">
-            <label for="image">Imazhi:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
-
-            <label for="titulli">Titulli:</label>
-            <input type="text" id="titulli" name="titulli" required>
-
-            <label for="cmimi">Çmimi:</label>
-            <input type="text" id="cmimi" name="cmimi" required>
-
-            <button type="submit">Shto Produktin</button>
-        </form>
-    <?php endif; ?>
+        </a>
+    </div>
+<?php endif; ?>
 
 </main>
  
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const addButton = document.getElementById("addProductButton");
-        const form = document.getElementById("product-form");
-
-        if (addButton) {
-            addButton.addEventListener("click", function () {
-                form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
-            });
-        }
-    });
-</script>
 
 <!-- Footer -->
 <div class="footer">

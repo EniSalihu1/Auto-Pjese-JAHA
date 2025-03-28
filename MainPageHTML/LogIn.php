@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
+            
         </ul>
     </header>
 
