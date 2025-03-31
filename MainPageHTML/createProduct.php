@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shto Produkt</title>
+    <link rel="stylesheet" href="../ProduktetCss/createProduct.css"> 
+</head>
+<body>
+    
 <?php
 $servername = "localhost";
 $username = "root";
@@ -69,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shto Produkt</title>
-    <link rel="stylesheet" href="../ProduktetCss/createProduct.css">  
+    <link rel="stylesheet" href="../ProduktetCss/createProduct.css"> 
 </head>
 <body>
 
