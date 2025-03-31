@@ -1,95 +1,113 @@
-/* Stilizimi i formës New Client që përputhet me Dashboard */
-.new-client-container {
-    background-color: white;
-    padding: 25px;
+
+.add-product-section {
+    background-color: #fff;
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 30px auto;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    margin: 25px 0;
+    border: 1px solid #e0e0e0;
 }
 
-.new-client-container h2 {
+.add-product-section h2 {
     color: #2c3e50;
     border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.product-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-field {
     margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
+.form-field label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+    margin-bottom: 10px;
+    font-weight: 600;
     color: #2c3e50;
+    font-size: 1rem;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group input[type="password"] {
+.form-field input[type="text"],
+.form-field input[type="number"],
+.form-field input[type="file"] {
     width: 100%;
-    padding: 12px;
+    padding: 12px 15px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: border-color 0.3s;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
 }
 
-.form-group input:focus {
+.form-field input[type="file"] {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px dashed #ccc;
+    cursor: pointer;
+}
+
+.form-field input:focus {
     border-color: #3498db;
     outline: none;
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
 }
 
 .form-actions {
     display: flex;
     justify-content: flex-end;
+    margin-top: 30px;
     gap: 15px;
-    margin-top: 25px;
 }
 
 .btn {
-    padding: 10px 20px;
+    padding: 12px 28px;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
-.btn-submit {
+.btn-primary {
     background-color: #3498db;
     color: white;
 }
 
-.btn-submit:hover {
+.btn-primary:hover {
     background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
-.btn-cancel {
-    background-color: #e74c3c;
+.btn-secondary {
+    background-color: #95a5a6;
     color: white;
 }
 
-.btn-cancel:hover {
-    background-color: #c0392b;
+.btn-secondary:hover {
+    background-color: #7f8c8d;
 }
 
-/* Stilizimi i ikonave (nëse përdoren) */
-.icon {
-    margin-right: 8px;
-    color: #3498db;
-}
 
-/* Responsive design */
 @media (max-width: 768px) {
-    .new-client-container {
-        margin: 20px;
-        padding: 15px;
+    .add-product-section {
+        padding: 20px;
+        margin: 15px 0;
+    }
+    
+    .product-form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
     
     .form-actions {
@@ -98,5 +116,20 @@
     
     .btn {
         width: 100%;
+        margin-bottom: 10px;
     }
+}
+
+.add-product-section {
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.btn-primary {
+    background-color: #3498db;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
 }
