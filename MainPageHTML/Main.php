@@ -25,9 +25,6 @@ $role = $_SESSION['role'] ?? 'client';
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
             <?php
-             session_start(); 
-             $isLoggedIn = isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : false;
-             $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
             if ($isLoggedIn && $role === 'admin'): ?>            
                 <li><a href="dashboard.php">Dashboard</a></li>          
             <?php endif; ?>
