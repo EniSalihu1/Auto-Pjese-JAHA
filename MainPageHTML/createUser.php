@@ -73,7 +73,7 @@ if( $_SERVER ['REQUEST_METHOD'] == 'POST'){
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        // add new client in database
+
 
         $sql = "INSERT INTO user (emri, mbiemri, email, phone_number, password)" . 
                 "VALUES ('$emri', '$mbiemri','$email','$phone_number','$hashedPassword')";

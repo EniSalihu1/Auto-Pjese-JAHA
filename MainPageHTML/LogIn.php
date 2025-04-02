@@ -13,11 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
 
         if ($user->login($email, $password)) {
-            $_SESSION['user_id'] = $user->getUserRole($email); // Ruaj ID e përdoruesit
+            $_SESSION['user_id'] = $user->getUserRole($email); 
             $_SESSION['email'] = $email;
-            $_SESSION['role'] = $user->getUserRole($email); // Merr rolin nga DB
+            $_SESSION['role'] = $user->getUserRole($email); 
 
-            // Ruaj email-in në cookie për 2 ditë
             setcookie("user_email", $email, time() + (86400 * 2), "/");
 
             header("Location: Main.php");

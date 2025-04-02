@@ -7,7 +7,6 @@ $username = "root";
 $password = "";
 $database = "autopjese_jaha";
 
-// Lidhja me databazën
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Lidhja dështoi: " . $conn->connect_error);
@@ -43,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $titulli = $_POST["titulli"];
     $cmimi = $_POST["cmimi"];
 
-    // Kontrollo nëse është ngarkuar një imazh i ri
     if (!empty($_FILES["image"]["name"])) {
         $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -64,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
         }
     } else {
-        // Nëse nuk është ngarkuar imazh i ri, përdor atë ekzistues
+
         $image = $_POST["existing_image"];
     }
 

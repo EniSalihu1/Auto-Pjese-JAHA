@@ -57,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             break;
         }
 
-        // UPDATE që përfshin rolin
         $sql = "UPDATE user 
                 SET emri = '$emri', mbiemri = '$mbiemri', email = '$email', phone_number = '$phone_number', role = '$role' 
                 WHERE id = $id";
@@ -107,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <input type="text" name="phone_number" placeholder="Numri i telefonit" required value="<?php echo htmlspecialchars($phone_number); ?>">
         </div>
 
-        <!-- Shtimi i një dropdown për rolin -->
         <div class="input-box">
             <label for="role">Roli:</label>
             <select name="role" id="role">

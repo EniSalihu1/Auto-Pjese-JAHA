@@ -34,12 +34,10 @@
             </li>
         </ul>
     </header>
-    
-<!-- Dashboard Container -->
+
 <div class="dashboard-container">
         <h1>Admin Dashboard</h1>
 
-        <!-- Shfaqja e Përdoruesve -->
         <h2>Përdoruesit</h2>
         <a href="createUser.php"> <button class="add-button">Shto Përdoruesin</button></a>
         <table class="table">
@@ -59,13 +57,12 @@
             <tbody>
 
             <?php
-                // Lidhja me bazën e të dhënave
+        
                 $conn = new mysqli("localhost", "root", "", "autopjese_jaha");
                 if ($conn->connect_error) {
                     die("Lidhja dështoi: " . $conn->connect_error);
                 }
 
-                // Shfaqja e të gjithë përdoruesve
                 $sql = "SELECT * FROM user";
                 $result = $conn->query($sql);
 
@@ -123,15 +120,12 @@
             $password = "";
             $database = "autopjese_jaha";
 
-            // Lidhja me databazën
             $conn = new mysqli($servername, $username, $password, $database);
 
-            // Kontrollo lidhjen
             if ($conn->connect_error) {
               die("Lidhja dështoi: " . $conn->connect_error);
             }
 
-            // Query për të marrë të dhënat nga tabela bodykitproduktet
             $sql = "SELECT * FROM bodykitproduktet";
             $result = $conn->query($sql);
 

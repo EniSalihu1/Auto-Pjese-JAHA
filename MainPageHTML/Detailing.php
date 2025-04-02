@@ -51,7 +51,6 @@ $role = $_SESSION['role'] ?? 'client';
             <h1>Produktet e pranishme: </h1>
         </div>
         <div class="product-grid">
-            <!-- Product Items -->
             <div class="product-item">
                 <img src="../Images/Produkti22D.webp" alt="Product 1">
                 <h2> Parfume</h2>
@@ -126,8 +125,7 @@ $role = $_SESSION['role'] ?? 'client';
             </div>
         </div>
     </main>
- 
-<!-- Butoni shto -->
+
 <?php if ($role === 'admin'): ?>
     <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
         <a href="dashboard.php">
@@ -157,7 +155,6 @@ $role = $_SESSION['role'] ?? 'client';
     }
 </script>
 
-<!-- Footer -->
 <div class="footer">
 
     <div class="footer-container">

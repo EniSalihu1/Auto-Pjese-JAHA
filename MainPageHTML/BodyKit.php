@@ -43,8 +43,6 @@ $role = $_SESSION['role'] ?? 'client';
     </ul>
 </header>
 
-<!-- PermBajtja -->
- 
 <main class="products-section">
 
     <div class="Hyrja">
@@ -101,7 +99,7 @@ $role = $_SESSION['role'] ?? 'client';
     </div>
 
     <?php
-// Lidhja me databazën
+
 $conn = new mysqli("localhost", "root", "", "autopjese_jaha");
 
 if ($conn->connect_error) {
