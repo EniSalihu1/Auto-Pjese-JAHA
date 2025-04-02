@@ -58,7 +58,6 @@ body {
     background-color: #062d03;
 }
 
-/* Product Section */
 .products-section {
     padding: 20px;
     text-align: center;
@@ -77,7 +76,6 @@ body {
     font-weight: bold;
 }
 
-/* Gridi i produkteve */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -117,7 +115,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Butoni + Shto Produkt */
 .add-button-container {
     display: flex;
     justify-content: center; 
@@ -125,8 +122,8 @@ body {
 }
 
 #addProductButton {
-    background-color: #083a03; /* Green background */
-    color: white; /* White text color */
+    background-color: #083a03; 
+    color: white; 
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
@@ -137,12 +134,11 @@ body {
 }
 
 #addProductButton:hover {
-    background-color: #062d03; /* Darker green for hover */
+    background-color: #062d03;
     transform: scale(1.05);
-    color: white; /* Ensure text stays white even on hover */
+    color: white;
 }
 
-/* Forma për shtimin e produktit */
 #product-form {
     max-width: 500px;
     margin: 20px auto;
@@ -186,7 +182,6 @@ body {
     background-color: #062d03;
 }
 
-/* Footer */
 .footer {
     background-color: #222;
     color: #fff;
@@ -259,7 +254,6 @@ body {
     color: #bbb;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .product-grid {
         grid-template-columns: repeat(2, 1fr);

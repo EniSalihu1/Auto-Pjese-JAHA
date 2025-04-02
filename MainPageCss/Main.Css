@@ -50,7 +50,7 @@ body{
 
 /* Stili për butonin "Log In" */
 .auth-button.login {
-   background-color: #054442; /* Jeshile e errët */
+   background-color:#062d03;; /* Jeshile e errët */
 }
 
 .auth-button.login:hover {
@@ -60,7 +60,7 @@ body{
 
 /* Stili për butonin "Log Out" */
 #LogOutButton {
-   background-color: #C70039; /* E kuqe e fortë */
+   background-color:#062d03;; /* E kuqe e fortë */
 }
 
 #LogOutButton:hover {

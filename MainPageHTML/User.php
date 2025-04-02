@@ -53,7 +53,7 @@ class User {
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row['role'] ?? 'client'; // Nëse nuk gjen rol, kthen 'client'
+        return $row['role'] ?? 'client';
     }
 }
 ?>
