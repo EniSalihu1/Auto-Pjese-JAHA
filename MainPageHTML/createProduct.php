@@ -19,9 +19,7 @@
         <li><a href="AboutUs.php">About Us</a></li>
         <li><a href="Contact.php">Contact Us</a></li>
         <?php 
-        session_start(); // Sigurohu që sesioni është nisur
-
-        // Kontrollo nëse përdoruesi është i kyçur
+        session_start();
         $isLoggedIn = isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : false;
         $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
         

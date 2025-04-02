@@ -7,7 +7,34 @@
     <link rel="stylesheet" href="../ProduktetCss/createUser.css"> 
 </head>
 <body>
+<header class="nav">
 
+<a href="Main.php">
+<img src="../Images/Logo.jpg" alt="Logo">
+</a>
+<ul>
+        <li><a href="Main.php">Home</a></li>
+        <li><a href="News.php">News</a></li>
+        <li><a href="Produkt.php">Products</a></li>
+        <li><a href="AboutUs.php">About Us</a></li>
+        <li><a href="Contact.php">Contact Us</a></li>
+        <?php 
+        session_start();
+        $isLoggedIn = isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : false;
+        $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+        
+        if ($isLoggedIn && $role === 'admin'): ?>            
+            <li><a href="dashboard.php">Dashboard</a></li>          
+        <?php endif; ?>
+        <li>
+            <?php if ($isLoggedIn): ?>
+            <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
+             <?php else: ?>
+            <button><a href="login.php" id="LogInButton">Log In</a></button>
+            <?php endif; ?>
+        </li>
+</ul>
+</header>
 <?php
 
 $servername = "localhost";
