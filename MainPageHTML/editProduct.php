@@ -91,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edito Produktin</title>
     <link rel="stylesheet" href="../ProduktetCss/editProduct.css">
+    </head>
     <header class="nav">
     <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
@@ -101,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <li><a href="Produkt.php">Products</a></li>
         <li><a href="AboutUs.php">About Us</a></li>
         <li><a href="Contact.php">Contact Us</a></li>
-</head>
+
 <body>
 
 <div class="container">
