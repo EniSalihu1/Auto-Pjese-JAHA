@@ -27,9 +27,9 @@
             <?php endif; ?>
             <li>
                 <?php if ($isLoggedIn): ?>
-                    <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
+                    <button><a href="logout.php" id="LogOutButton">Log In</a></button>
                 <?php else: ?>
-                    <button><a href="login.php" id="LogInButton">Log In</a></button>
+                    <button><a href="login.php" id="LogInButton">Log Out</a></button>
                 <?php endif; ?>
             </li>
         </ul>
