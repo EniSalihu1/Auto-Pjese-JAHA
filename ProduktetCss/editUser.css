@@ -63,6 +63,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -74,27 +75,40 @@ h2 {
     margin: 10px 0;
 }
 
-.input-box input, .input-box select {
+.input-box input, 
+.input-box select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 .btn {
     display: inline-block;
+    width: 100%;
+    padding: 10px;
     background: #28a745;
     color: white;
-    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
     text-decoration: none;
 }
 
 .btn:hover {
     background: #218838;
 }
+
+.btn-danger {
+    background: #dc3545;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
 .footer {
     background-color: #222;
     color: #fff;
