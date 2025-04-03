@@ -2,9 +2,6 @@ body{
    margin: 0;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-/* Nav */
-
 .nav {
 
    display: flex;
@@ -45,26 +42,24 @@ body{
    font-weight: bold;
    cursor: pointer;
    transition: background-color 0.3s, transform 0.2s;
-   color: white; /* Siguron që teksti të jetë i bardhë */
+   color: white; 
 }
 
-/* Stili për butonin "Log In" */
 .auth-button.login {
-   background-color:#062d03;; /* Jeshile e errët */
+   background-color:#062d03;
 }
 
 .auth-button.login:hover {
-   background-color: #03312E; /* Jeshile më e errët në hover */
+   background-color: #03312E;
    transform: scale(1.05);
 }
 
-/* Stili për butonin "Log Out" */
 #LogOutButton {
-   background-color:#062d03;; /* E kuqe e fortë */
+   background-color:#062d03;;
 }
 
 #LogOutButton:hover {
-   background-color: #900C3F; /* E kuqe më e errët në hover */
+   background-color: #900C3F;
    transform: scale(1.05);
 }
 #LogIn button {
@@ -84,7 +79,6 @@ body{
    border-radius: 18px;
 }
 
-/* Kontaineri */
 .container {
    position: relative;
     display: flex;

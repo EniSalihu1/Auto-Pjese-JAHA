@@ -78,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edito Përdoruesin</title>
+    <link rel="stylesheet" href="../ProduktetCss/editUser.css">
     <header class="nav">
     <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
