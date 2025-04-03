@@ -1,4 +1,22 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edito Përdoruesin</title>
+    <link rel="stylesheet" href="../ProduktetCss/editUser.css">
+    </head>
+    <header class="nav">
+    <a href="./Main.html">
+        <img src="../Images/Logo.jpg" alt="Logo">
+    </a>
+    <ul>
+        <li><a href="Main.php">Home</a></li>
+        <li><a href="News.php">News</a></li>
+        <li><a href="Produkt.php">Products</a></li>
+        <li><a href="AboutUs.php">About Us</a></li>
+        <li><a href="Contact.php">Contact Us</a></li>
+<body><?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -71,26 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } while (false);
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edito Përdoruesin</title>
-    <link rel="stylesheet" href="../ProduktetCss/editUser.css">
-    </head>
-    <header class="nav">
-    <a href="./Main.html">
-        <img src="../Images/Logo.jpg" alt="Logo">
-    </a>
-    <ul>
-        <li><a href="Main.php">Home</a></li>
-        <li><a href="News.php">News</a></li>
-        <li><a href="Produkt.php">Products</a></li>
-        <li><a href="AboutUs.php">About Us</a></li>
-        <li><a href="Contact.php">Contact Us</a></li>
-<body>
 
 <div class="container">
     <h2>Edito Përdoruesin</h2>
