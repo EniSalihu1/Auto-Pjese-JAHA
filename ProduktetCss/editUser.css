@@ -41,14 +41,15 @@ body {
 }
 
 .container {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 20px;
+    width: 90%;
+    max-width: 500px;
     background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    text-align: center;
 }
-
 h2 {
     margin-bottom: 20px;
 }
