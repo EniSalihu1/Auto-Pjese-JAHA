@@ -6,6 +6,7 @@
     <title>Edito Produktin</title>
     <link rel="stylesheet" href="../ProduktetCss/editProduct.css">
     </head>
+    <body>
     <header class="nav">
     <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
@@ -17,7 +18,6 @@
         <li><a href="AboutUs.php">About Us</a></li>
         <li><a href="Contact.php">Contact Us</a></li>
 
-<body>
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
