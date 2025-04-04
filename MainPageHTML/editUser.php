@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edito Përdoruesin</title>
     <link rel="stylesheet" href="../ProduktetCss/editUser.css">
-    </head>
-    <body>
-    <header class="nav">
+</head>
+<body>
+<header class="nav">
     <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
@@ -17,6 +17,9 @@
         <li><a href="Produkt.php">Products</a></li>
         <li><a href="AboutUs.php">About Us</a></li>
         <li><a href="Contact.php">Contact Us</a></li>
+    </ul>
+</header>
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -60,15 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $mbiemri = $row["mbiemri"];
     $email = $row["email"];
     $phone_number = $row["phone_number"];
-    $role = $row["role"]; // Merr rolin ekzistues
-
+    $role = $row["role"];
 } else {
     $id = $_POST["id"];
     $emri = $_POST["emri"];
     $mbiemri = $_POST["mbiemri"];
     $email = $_POST["email"];
     $phone_number = $_POST["phone_number"];
-    $role = $_POST["role"]; // Merr rolin nga forma
+    $role = $_POST["role"];
 
     do {
         if (empty($emri) || empty($mbiemri) || empty($email) || empty($phone_number) || empty($role)) {

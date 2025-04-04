@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edito Produktin</title>
     <link rel="stylesheet" href="../ProduktetCss/editProduct.css">
-    </head>
-    <body>
-    <header class="nav">
+</head>
+<body>
+
+<header class="nav">
     <a href="./Main.html">
         <img src="../Images/Logo.jpg" alt="Logo">
     </a>
@@ -17,6 +18,8 @@
         <li><a href="Produkt.php">Products</a></li>
         <li><a href="AboutUs.php">About Us</a></li>
         <li><a href="Contact.php">Contact Us</a></li>
+    </ul>
+</header>
 
 <?php
 error_reporting(E_ALL);
@@ -82,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
         }
     } else {
-
         $image = $_POST["existing_image"];
     }
 
@@ -103,8 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 ?>
-
-
 
 <div class="container">
     <h2>Edito Produktin</h2>
@@ -130,33 +130,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <button type="submit">Ruaj Ndryshimet</button>
         <a href="dashboard.php">Anulo</a>
     </form>
-    <div class="footer">
-
-      <div class="footer-container">
-          <div class="footer-section">
-              <h4>Rreth Nesh</h4>
-              <p>Ne ofrojmë pjesë cilësore për çdo lloj automjeti. Garantojmë cilësi dhe besueshmëri.</p>
-          </div>
-          
-          <div class="footer-section">
-              <h4>Na Kontaktoni </h4>
-              <p>Email: info@autopjesa.com</p>
-              <p>Tel: +383 44 296 081</p>
-              <p>Adresa: Rruga Ferizajit Km 1, Gjilan</p>
-          </div>
-          <div class="footer-section social">
-              <h4>Na Ndiqni ne faqen tone ne:</h4>
-                  <div class="social-icons">
-                      <a href="https://www.facebook.com/profile.html?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
-                  </div>
-          </div>
-      </div>
-      <div class="footer-bottom">
-          <p>&copy; 2024 AutoPjesa. Të gjitha të drejtat e rezervuara.</p>
-      </div>
-
-  </div>
 </div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Rreth Nesh</h4>
+            <p>Ne ofrojmë pjesë cilësore për çdo lloj automjeti. Garantojmë cilësi dhe besueshmëri.</p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Na Kontaktoni </h4>
+            <p>Email: info@autopjesa.com</p>
+            <p>Tel: +383 44 296 081</p>
+            <p>Adresa: Rruga Ferizajit Km 1, Gjilan</p>
+        </div>
+        <div class="footer-section social">
+            <h4>Na Ndiqni ne faqen tone ne:</h4>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.html?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 AutoPjesa. Të gjitha të drejtat e rezervuara.</p>
+    </div>
+</footer>
 
 </body>
 </html>
