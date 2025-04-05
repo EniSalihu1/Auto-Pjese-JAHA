@@ -1,6 +1,7 @@
 <?php
 session_start();
-$isLoggedIn = isset($_SESSION['user_id']);
+
+$isLoggedIn = isset($_SESSION['user_id']); 
 $role = $_SESSION['role'] ?? 'client';  
 ?>
 
@@ -18,22 +19,29 @@ $role = $_SESSION['role'] ?? 'client';
             <img src="../Images/Logo.jpg" alt="Logo">
         </a>
         <ul>
+            <li><a href="../MainPageHTML/Main.php">Home</a></li>
+            <li><a href="../MainPageHTML/News.php">News</a></li>
             <li><a href="../MainPageHTML/Produkt.php">Products</a></li>
             <li><a href="../MainPageHTML/AboutUs.php">About Us</a></li>
             <li><a href="../MainPageHTML/Contact.php">Contact Us</a></li>
+            
             <?php 
-            $isLoggedIn = isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : false;
-            $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+           
             if ($isLoggedIn && $role === 'admin'): ?>            
                 <li><a href="dashboard.php">Dashboard</a></li>          
             <?php endif; ?>
-            <?php if ($isLoggedIn): ?>
-               
-                <li><button><a href="logout.php" id="LogOutButton">Log Out</a></button></li>
-            <?php else: ?>
-                 
-                <li><button><a href="login.php" id="LogInButton">Log In</a></button></li>
-            <?php endif; ?>
+            
+            <li>
+                <?php if ($isLoggedIn): ?>
+                    <button style="background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px;">
+                        <a href="logout.php" style="color: white; text-decoration: none;">Log Out</a>
+                    </button>
+                <?php else: ?>
+                    <button style="background-color: #054442; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px;">
+                        <a href="login.php" style="color: white; text-decoration: none;">Log In</a>
+                    </button>
+                <?php endif; ?>
+            </li>
         </ul>
     </header>
 
@@ -41,24 +49,22 @@ $role = $_SESSION['role'] ?? 'client';
         <h2>Zgjedheni kategorinë e juaj që jeni të interesuar !</h2>
     </div>
 
-
-        <section class="filter-product-container">
-            <div class="product-gallery">
-                <div class="product">
-                    <a href="../MainPageHTML/BodyKit.php"><img src="../Images/Bodykit2.jpg" alt="BodyKit" width="90%"></a>
-                    <h3>Body Kit</h3>
-                </div>
-                <div class="product">
-                    <a href="../MainPageHTML/PjesetMotorrike.php"><img src="../Images/PjesetMotorrike.jpg" alt="PjesetMotorrike"></a>
-                    <h3>Pjesët Motorrike</h3>
-                </div>
-                <div class="product">
-                    <a href="../MainPageHTML/Detailing.php"><img src="../Images/Detailing.jpg" alt="Detailing" width="57%"></a>
-                    <h3>Detailing</h3>
-                </div>
+    <section class="filter-product-container">
+        <div class="product-gallery">
+            <div class="product">
+                <a href="../MainPageHTML/BodyKit.php"><img src="../Images/Bodykit2.jpg" alt="BodyKit" width="90%"></a>
+                <h3>Body Kit</h3>
             </div>
-        </section>
-    </main>
+            <div class="product">
+                <a href="../MainPageHTML/PjesetMotorrike.php"><img src="../Images/PjesetMotorrike.jpg" alt="PjesetMotorrike"></a>
+                <h3>Pjesët Motorrike</h3>
+            </div>
+            <div class="product">
+                <a href="../MainPageHTML/Detailing.php"><img src="../Images/Detailing.jpg" alt="Detailing" width="57%"></a>
+                <h3>Detailing</h3>
+            </div>
+        </div>
+    </section>
 
     <div class="footer">
         <div class="footer-container">

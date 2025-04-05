@@ -32,9 +32,13 @@ $role = $_SESSION['role'] ?? 'client';
             <?php endif; ?>
             <li>
                 <?php if ($isLoggedIn): ?>
-                <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
-                 <?php else: ?>
-                <button><a href="login.php" id="LogInButton">Log In</a></button>
+                    <a href="logout.php" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; transition: background-color 0.3s;" class="auth-button logout">
+                        Log Out
+                    </a>
+                <?php else: ?>
+                    <a href="login.php" style="background-color: #054442; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; transition: background-color 0.3s;" class="auth-button login">
+                        Log In
+                    </a>
                 <?php endif; ?>
             </li>
         </ul>

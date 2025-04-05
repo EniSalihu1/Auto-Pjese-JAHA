@@ -27,12 +27,16 @@
             <li><a href="dashboard.php">Dashboard</a></li>          
         <?php endif; ?>
         <li>
-            <?php if ($isLoggedIn): ?>
-            <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
-             <?php else: ?>
-            <button><a href="login.php" id="LogInButton">Log In</a></button>
-            <?php endif; ?>
-        </li>
+                <?php if ($isLoggedIn): ?> 
+                    <a href="Login.php" style="font-family: Courier, monospace; background-color: #054442; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; transition: background-color 0.3s;" class="auth-button logout">
+                        Log In
+                    </a>
+                <?php else: ?>
+                    <a href="Logout.php" style="font-family: Courier, monospace; background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; transition: background-color 0.3s;" class="auth-button login">
+                        Log Out
+                    </a>
+                <?php endif; ?>
+            </li>
 </ul>
 </header>
     
@@ -42,15 +46,12 @@ $username = "root";
 $password = "";
 $database = "autopjese_jaha";
 
-// Lidhja me databazën
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Kontrollo lidhjen
 if ($conn->connect_error) {
     die("Lidhja dështoi: " . $conn->connect_error);
 }
 
-// Inicializimi i variablave
 $titulli = "";
 $cmimi = "";
 $image = "";
@@ -61,22 +62,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulli = $_POST["titulli"];
     $cmimi = $_POST["cmimi"];
 
-    // Verifikimi nëse është ngarkuar një imazh
     if (!empty($_FILES["image"]["name"])) {
-        $target_dir = "uploads/"; // Sigurohu që ky folder ekziston
+        $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        // Kontrollo nëse file është imazh
         $check = getimagesize($_FILES["image"]["tmp_name"]);
         if ($check === false) {
             $errorMessage = "Skedari nuk është një imazh!";
-        } elseif ($_FILES["image"]["size"] > 5000000) { // Kufizim në madhësinë e skedarit (5MB)
+        } elseif ($_FILES["image"]["size"] > 5000000) { 
             $errorMessage = "Imazhi është shumë i madh!";
         } elseif (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
             $errorMessage = "Lejohen vetëm formatet JPG, JPEG, PNG & GIF!";
         } else {
-            // Ruaj imazhin në folderin "uploads"
+            
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                 $image = $target_file;
             } else {
@@ -87,12 +86,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorMessage = "Ju lutem ngarkoni një imazh!";
     }
 
-    // Nëse nuk ka gabime, fut të dhënat në databazë
     if (empty($errorMessage)) {
         $sql = "INSERT INTO bodykitproduktet (image, titulli, cmimi) VALUES ('$image', '$titulli', '$cmimi')";
         if ($conn->query($sql) === TRUE) {
             $successMessage = "Produkti u shtua me sukses!";
-            header("Location: dashboard.php"); // Kthehet në dashboard pas suksesit
+            header("Location: dashboard.php"); 
             exit;
         } else {
             $errorMessage = "Gabim në query: " . $conn->error;

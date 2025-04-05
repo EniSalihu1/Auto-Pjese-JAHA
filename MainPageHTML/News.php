@@ -1,10 +1,10 @@
 <?php
 session_start();
 
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : ''; 
+
 $isLoggedIn = isset($_SESSION['user_id']);
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,23 +27,25 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
-            <?php 
-            $isLoggedIn = isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : false;
-            $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+            
+            <?php
             if ($isLoggedIn && $role === 'admin'): ?>            
                 <li><a href="dashboard.php">Dashboard</a></li>          
             <?php endif; ?>
             <li>
                 <?php if ($isLoggedIn): ?>
-                <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
-                 <?php else: ?>
-                <button><a href="login.php" id="LogInButton">Log In</a></button>
+                    <button style="background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px;">
+                        <a href="logout.php" style="color: white; text-decoration: none;">Log Out</a>
+                    </button>
+                <?php else: ?>
+                    <button style="background-color: #054442; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px;">
+                        <a href="login.php" style="color: white; text-decoration: none;">Log In</a>
+                    </button>
                 <?php endif; ?>
             </li>
-            
+         
         </ul>
     </header>
-
 
     <section class="slider">
         <div class="slider-container">
@@ -72,8 +74,6 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <a href="https://www.autoshkolla-ks.com/artikujt/gomat-e-dimrit-ligji-dhe-cilat-jane-me-te-mira-te-ngushta-apo-te-gjera">Lexo më shumë</a>
           </div>
         </div>
-
-          <!-- Butonat -->
   
           <button class="prev">❮</button>
           <button class="next">❯</button>
@@ -82,7 +82,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
         
 
 
-    <!-- Footer -->
+    <!-- Footeri -->
 
     <div class="footer">
 

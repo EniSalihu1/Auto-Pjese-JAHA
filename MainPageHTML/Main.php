@@ -11,7 +11,7 @@ $role = $_SESSION['role'] ?? 'client';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Pjese JAHA</title>
-    <link rel="stylesheet" href="../MainPageCss/Main.Css">
+    <link rel="stylesheet" href="../MainPageCss/Main.css">
 </head>
 <body>
     <header class="nav">
@@ -24,15 +24,20 @@ $role = $_SESSION['role'] ?? 'client';
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
-            <?php
-            if ($isLoggedIn && $role === 'admin'): ?>            
+            <?php if ($isLoggedIn && $role === 'admin'): ?>            
                 <li><a href="dashboard.php">Dashboard</a></li>          
             <?php endif; ?>
-            <?php if ($isLoggedIn): ?>            
-                <li><button><a href="logout.php" id="LogOutButton">Log Out</a></button></li>          
-            <?php else: ?>
-                <li><button><a href="login.php" id="LogInButton">Log In</a></button></li>
-            <?php endif; ?>
+            <li>
+                <?php if ($isLoggedIn): ?>
+                    <a href="logout.php" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; transition: background-color 0.3s;" class="auth-button logout">
+                        Log Out
+                    </a>
+                <?php else: ?>
+                    <a href="login.php" style="background-color: #054442; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; transition: background-color 0.3s;" class="auth-button login">
+                        Log In
+                    </a>
+                <?php endif; ?>
+            </li>
         </ul>
     </header>
 
@@ -41,13 +46,13 @@ $role = $_SESSION['role'] ?? 'client';
             <h1>Gjithçka që i duhet makinës tuaj, në një vend!</h1>
         </div>
 
-        <div class="search-box" style="text-align: center; margin-bottom: 20px;">
+        <div class="search-box">
             <input type="text" placeholder="Çfarë produkti po kërkoni?..." id="search" name="search">
             <button type="submit">Kërko</button>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footeri -->
     <div class="footer">
         <div class="footer-container">
             <div class="footer-section">

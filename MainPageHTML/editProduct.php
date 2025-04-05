@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     </form>
 </div>
 
-<footer>
+<footer class="footer">
     <div class="footer-container">
         <div class="footer-section">
             <h4>Rreth Nesh</h4>

@@ -99,68 +99,86 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <?php if (!empty($errorMessage)) { echo "<p style='color:red;'>$errorMessage</p>"; } ?>
     <?php if (!empty($successMessage)) { echo "<p style='color:green;'>$successMessage</p>"; } ?>
 
+   
     <form method="POST">
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-        <div class="input-box">
-            <input type="text" name="emri" placeholder="Emri" required value="<?php echo htmlspecialchars($emri); ?>">
-        </div>
-
-        <div class="input-box">
-            <input type="text" name="mbiemri" placeholder="Mbiemri" required value="<?php echo htmlspecialchars($mbiemri); ?>">
-        </div>
-
-        <div class="input-box">
-            <input type="email" name="email" placeholder="Email" required value="<?php echo htmlspecialchars($email); ?>">
-        </div>
-
-        <div class="input-box">
-            <input type="text" name="phone_number" placeholder="Numri i telefonit" required value="<?php echo htmlspecialchars($phone_number); ?>">
-        </div>
-
-        <div class="input-box">
-            <label for="role">Roli:</label>
-            <select name="role" id="role">
-                <option value="admin" <?php if($role == "admin") echo "selected"; ?>>Admin</option>
-                <option value="client" <?php if($role == "client") echo "selected"; ?>>Client</option>
-            </select>
-        </div>
-
-        <div class="input-box">
-            <button type="submit" class="btn">Ruaj Ndryshimet</button>
-        </div>
-
-        <div class="input-box">
-            <a href="dashboard.php" class="btn">Anulo</a>
-        </div>
-    </form>
-    <div class="footer">
-
-<div class="footer-container">
-    <div class="footer-section">
-        <h4>Rreth Nesh</h4>
-        <p>Ne ofrojmë pjesë cilësore për çdo lloj automjeti. Garantojmë cilësi dhe besueshmëri.</p>
+    <div class="input-box">
+        <input type="text" name="emri" placeholder="Emri" required
+               value="<?php echo htmlspecialchars($emri); ?>"
+               style="width: 775px; padding: 10px; border-radius: 5px;">
     </div>
-    
-    <div class="footer-section">
-        <h4>Na Kontaktoni </h4>
-        <p>Email: info@autopjesa.com</p>
-        <p>Tel: +383 44 296 081</p>
-        <p>Adresa: Rruga Ferizajit Km 1, Gjilan</p>
+
+    <div class="input-box">
+        <input type="text" name="mbiemri" placeholder="Mbiemri" required
+               value="<?php echo htmlspecialchars($mbiemri); ?>"
+               style="width: 775px; padding: 10px; border-radius: 5px;">
     </div>
-    <div class="footer-section social">
-        <h4>Na Ndiqni ne faqen tone ne:</h4>
+
+    <div class="input-box">
+        <input type="email" name="email" placeholder="Email" required
+               value="<?php echo htmlspecialchars($email); ?>"
+               style="width: 775px; padding: 10px; border-radius: 5px;">
+    </div>
+
+    <div class="input-box">
+        <input type="text" name="phone_number" placeholder="Numri i telefonit" required
+               value="<?php echo htmlspecialchars($phone_number); ?>"
+               style="width: 775px; padding: 10px; border-radius: 5px;">
+    </div>
+
+    <div class="input-box">
+        <label for="role">Roli:</label><br>
+        <select name="role" id="role"
+                style="width: 775px; padding: 10px; border-radius: 5px;">
+            <option value="admin" <?php if ($role == "admin") echo "selected"; ?>>Admin</option>
+            <option value="client" <?php if ($role == "client") echo "selected"; ?>>Client</option>
+        </select>
+    </div>
+
+    <div class="input-box" style="display: flex; gap: 10px; justify-content: center;">
+        <button type="submit"
+            style="width: 180px; background-color: #054442; color: white; border: none; font-size: 16px; font-weight: bold; cursor: pointer; padding: 12px 24px; border-radius: 5px; text-align: center;">
+            Ruaj Ndryshimet
+        </button>
+
+        <a href="dashboard.php"
+           style="width: 180px; background-color: #054442; color: white; display: inline-block; text-decoration: none; font-size: 16px; font-weight: bold; padding: 12px 24px; border-radius: 5px; text-align: center;">
+            Anulo
+        </a>
+    </div>
+</form>
+</div>
+
+<!-- Footeri -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Rreth Nesh</h4>
+            <p>Ne ofrojmë pjesë cilësore për çdo lloj automjeti. Garantojmë cilësi dhe besueshmëri.</p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Na Kontaktoni</h4>
+            <p>Email: info@autopjesa.com</p>
+            <p>Tel: +383 44 296 081</p>
+            <p>Adresa: Rruga Ferizajit Km 1, Gjilan</p>
+        </div>
+
+        <div class="footer-section social">
+            <h4>Na Ndiqni në faqen tonë në:</h4>
             <div class="social-icons">
-                <a href="https://www.facebook.com/profile.html?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
+                <a href="https://www.facebook.com/profile.html?id=100039106436166">
+                    <img src="../Images/Facebook.webp" alt="Facebook">
+                </a>
             </div>
+        </div>
     </div>
-</div>
-<div class="footer-bottom">
-    <p>&copy; 2024 AutoPjesa. Të gjitha të drejtat e rezervuara.</p>
-</div>
 
-</div>
-</div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 AutoPjesa. Të gjitha të drejtat e rezervuara.</p>
+    </div>
+</footer>
 
 </body>
 </html>

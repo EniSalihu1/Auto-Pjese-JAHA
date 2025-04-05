@@ -4,6 +4,7 @@ body {
 }
 
 /* Nav */
+
 .nav {
     display: flex;
     align-items: center;
@@ -47,6 +48,7 @@ body {
     font-weight: bold;
     color: #000000;
     cursor: pointer;
+    display: inline-block;
 }
 
 #LogInButton a, #LogOutButton a {
@@ -57,104 +59,63 @@ body {
 #LogInButton:hover, #LogOutButton:hover {
     background-color: #062d03;
 }
-.add-product-section {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    margin: 25px 0;
-    border: 1px solid #e0e0e0;
+
+#LogInButton {
+    display: none;
 }
 
-.add-product-section h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 12px;
-    margin-top: 0;
-    margin-bottom: 30px;
-    font-size: 1.8rem;
+
+#LogOutButton {
+    display: none;
 }
 
-.product-form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-bottom: 25px;
-}
-
-.form-field {
-    margin-bottom: 20px;
-}
-
-.form-field label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #2c3e50;
-    font-size: 1rem;
-}
-
-.form-field input[type="text"],
-.form-field input[type="number"],
-.form-field input[type="file"] {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+/*Container*/
+.container {
+    max-width: 400px;
+    margin: 50px auto;
     background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-field input[type="file"] {
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #054442;
+}
+
+.input-box {
+    margin-bottom: 15px;
+}
+
+.input-box input,
+.input-box select,
+.input-box button {
+    width: 100%;
     padding: 10px;
-    background-color: #f5f5f5;
-    border: 1px dashed #ccc;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-box button {
+    background-color: #054442;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
-}
-
-.form-field input:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    background-color: #fff;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 30px;
-    gap: 15px;
-}
-
-.btn {
-    padding: 12px 28px;
+    transition: background-color 0.3s ease;
     border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.btn-primary {
-    background-color: #3498db;
-    color: white;
+.input-box button:hover {
+    background-color: #043735;
 }
 
-.btn-primary:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-}
 
-.btn-secondary {
-    background-color: #95a5a6;
-    color: white;
-}
 
-.btn-secondary:hover {
-    background-color: #7f8c8d;
-}
+/*Footeri*/
 .footer {
     background-color: #222;
     color: #fff;
@@ -227,38 +188,14 @@ body {
     color: #bbb;
 }
 
-
 @media (max-width: 768px) {
-    .add-product-section {
-        padding: 20px;
-        margin: 15px 0;
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
-    .product-form-grid {
+}
+
+@media (max-width: 480px) {
+    .product-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
     }
-    
-    .form-actions {
-        flex-direction: column;
-    }
-    
-    .btn {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-}
-
-.add-product-section {
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.btn-primary {
-    background-color: #3498db;
-}
-
-.btn-primary:hover {
-    background-color: #2980b9;
 }

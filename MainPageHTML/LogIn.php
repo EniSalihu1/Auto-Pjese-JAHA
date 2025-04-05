@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +57,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .error-message a:hover {
             text-decoration: underline;
         }
+
+        .input-box input,
+        .btn {
+            width: 100%; 
+            max-width: 400px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block; 
+            box-sizing: border-box; 
+        }
     </style>
 </head>
 <body>
@@ -71,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
-            
         </ul>
     </header>
 

@@ -26,19 +26,20 @@ $role = $_SESSION['role'] ?? 'client';
         <li><a href="Produkt.php">Products</a></li>
         <li><a href="AboutUs.php">About Us</a></li>
         <li><a href="Contact.php">Contact Us</a></li>
-        <?php
-        $isLoggedIn = isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : false;
-        $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
-        if ($isLoggedIn && $role === 'admin'): ?>            
+        <?php if ($isLoggedIn && $role === 'admin'): ?>            
                 <li><a href="dashboard.php">Dashboard</a></li>          
-            <?php endif; ?>
+        <?php endif; ?>
         <li>
-            <?php if ($isLoggedIn): ?>
-                <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
-            <?php else: ?>
-                <button><a href="login.php" id="LogInButton">Log In</a></button>
-            <?php endif; ?>
-        </li>
+                <?php if ($isLoggedIn): ?>
+                    <a href="logout.php" style="font-family: 'Courier New', Courier, monospace; background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; transition: background-color 0.3s;" class="auth-button logout">
+                        Log Out
+                    </a>
+                <?php else: ?>
+                    <a href="login.php" style="font-family: 'Courier New', Courier, monospace; background-color: #054442; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; transition: background-color 0.3s;" class="auth-button login">
+                        Log In
+                    </a>
+                <?php endif; ?>
+            </li>
     </ul>
 </header>
 
@@ -48,7 +49,6 @@ $role = $_SESSION['role'] ?? 'client';
         <h1>Produktet e pranishme:</h1>
     </div>
 
- 
     <div class="product-grid">
         <div class="product-item">
             <img src="../Images/Produkt1.webp" alt="Product 1">
@@ -105,7 +105,6 @@ if ($conn->connect_error) {
     die("Lidhja dështoi: " . $conn->connect_error);
 }
 
-// Merr produktet nga databaza
 $sql = "SELECT * FROM bodykitproduktet";
 $result = $conn->query($sql);
 ?>
@@ -126,8 +125,6 @@ $result = $conn->query($sql);
 <?php $conn->close(); ?>
 
 
-
-   
 <?php if ($role === 'admin'): ?>
     <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
         <a href="dashboard.php">
@@ -151,7 +148,6 @@ $result = $conn->query($sql);
 <?php endif; ?>
 
 </main>
- 
 
 <!-- Footer -->
 <div class="footer">

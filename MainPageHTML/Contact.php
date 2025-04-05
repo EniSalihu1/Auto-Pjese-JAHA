@@ -1,13 +1,14 @@
 <?php
 session_start();
+ 
+$isLoggedIn = isset($_SESSION['user_id']); 
+$role = $_SESSION['role'] ?? 'client';  
 
-include_once 'db_products.php';
+include_once 'db_autopjese.php';
 include_once 'UserKlienti.php';
 
-$isLoggedIn = isset($_SESSION['user_id']);
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $db = new db_products();
+    $db = new db_autopjese();
     $connection = $db->getConnection();
     $user = new UserKlienti($connection);
 
@@ -43,21 +44,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="Produkt.php">Products</a></li>
             <li><a href="AboutUs.php">About Us</a></li>
             <li><a href="Contact.php">Contact Us</a></li>
-              <?php 
-              $isLoggedIn = isset($_SESSION['isLoggedIn']) ? $_SESSION['isLoggedIn'] : false;
-              $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
-              if ($isLoggedIn && $role === 'admin'): ?>            
+
+            <?php 
+            if ($isLoggedIn && $role === 'admin'): ?>            
                 <li><a href="dashboard.php">Dashboard</a></li>          
             <?php endif; ?>
+
             <li>
                 <?php if ($isLoggedIn): ?>
-                    <button><a href="logout.php" id="LogOutButton">Log Out</a></button>
+                    <button style="background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px;">
+                        <a href="logout.php" style="color: white; text-decoration: none;">Log Out</a>
+                    </button>
                 <?php else: ?>
-                    <button><a href="login.php" id="LogInButton">Log In</a></button>
+                    <button style="background-color: #054442; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px;">
+                        <a href="login.php" style="color: white; text-decoration: none;">Log In</a>
+                    </button>
                 <?php endif; ?>
             </li>
         </ul>
     </header>
+
     <div class="container">
         <div class="left-section">
             <h2>Numri i Telefonit</h2>
@@ -67,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h2>Orari Punes</h2>
             <p>E Hene – E Shtune ..... 10 am – 8 pm<br>E Diele ...... Mbyllur</p>
         </div>
+
         <div class="right-section">
             <h2>CONTACT US</h2>
             <form id="ContactUs" action="Contact.php" method="POST">
@@ -77,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </div>
+
     <div class="footer">
         <div class="footer-container">
             <div class="footer-section">
@@ -90,9 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p>Adresa: Rruga Ferizajit Km 1, Gjilan</p>
             </div>
             <div class="footer-section social">
-                <h4>Na Ndiqni ne faqen tone ne:</h4>
+                <h4>Na Ndiqni në faqen tonë në:</h4>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.html?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
+                    <a href="https://www.facebook.com/profile.php?id=100039106436166"><img src="../Images/Facebook.webp" alt="Facebook"></a>
                 </div>
             </div>
         </div>
